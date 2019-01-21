@@ -1,0 +1,1 @@
+These are project files related to the Winter 2019 Data Visualization for Public Policy class, a part of UChicago's CAPP degree program. Author of all materials in this repo is Stephen Stapleton.

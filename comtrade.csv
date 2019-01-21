@@ -1,0 +1,291 @@
+Classification,Year,Trade Flow Code,Trade Flow,Reporter Code,Reporter,Partner Code,Partner,Commodity Code,Commodity,Trade Value (US$),Flag
+H5,2017,1,Import,842,USA,156,China,1,Animals; live,36327640,4
+H5,2017,2,Export,842,USA,156,China,1,Animals; live,16729257,4
+H5,2017,3,Re-Export,842,USA,156,China,1,Animals; live,179614,0
+H5,2017,1,Import,842,USA,156,China,2,Meat and edible meat offal,16583287,4
+H5,2017,2,Export,842,USA,156,China,2,Meat and edible meat offal,521899634,0
+H5,2017,1,Import,842,USA,156,China,3,"Fish and crustaceans, molluscs and other aquatic invertebrates",2029229420,4
+H5,2017,2,Export,842,USA,156,China,3,"Fish and crustaceans, molluscs and other aquatic invertebrates",1235589412,4
+H5,2017,3,Re-Export,842,USA,156,China,3,"Fish and crustaceans, molluscs and other aquatic invertebrates",4952891,0
+H5,2017,1,Import,842,USA,156,China,4,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",12722934,4
+H5,2017,2,Export,842,USA,156,China,4,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",409038171,4
+H5,2017,3,Re-Export,842,USA,156,China,4,"Dairy produce; birds' eggs; natural honey; edible products of animal origin, not elsewhere specified or included",63784,0
+H5,2017,1,Import,842,USA,156,China,5,Animal originated products; not elsewhere specified or included,457724953,4
+H5,2017,2,Export,842,USA,156,China,5,Animal originated products; not elsewhere specified or included,269390023,4
+H5,2017,3,Re-Export,842,USA,156,China,5,Animal originated products; not elsewhere specified or included,9107137,0
+H5,2017,1,Import,842,USA,156,China,6,"Trees and other plants, live; bulbs, roots and the like; cut flowers and ornamental foliage",57875106,4
+H5,2017,2,Export,842,USA,156,China,6,"Trees and other plants, live; bulbs, roots and the like; cut flowers and ornamental foliage",4476338,4
+H5,2017,3,Re-Export,842,USA,156,China,6,"Trees and other plants, live; bulbs, roots and the like; cut flowers and ornamental foliage",3711,0
+H5,2017,1,Import,842,USA,156,China,7,Vegetables and certain roots and tubers; edible,478679136,4
+H5,2017,2,Export,842,USA,156,China,7,Vegetables and certain roots and tubers; edible,47574169,0
+H5,2017,3,Re-Export,842,USA,156,China,7,Vegetables and certain roots and tubers; edible,2298875,0
+H5,2017,1,Import,842,USA,156,China,8,"Fruit and nuts, edible; peel of citrus fruit or melons",158782850,4
+H5,2017,2,Export,842,USA,156,China,8,"Fruit and nuts, edible; peel of citrus fruit or melons",488468993,0
+H5,2017,3,Re-Export,842,USA,156,China,8,"Fruit and nuts, edible; peel of citrus fruit or melons",2927631,0
+H5,2017,1,Import,842,USA,156,China,9,"Coffee, tea, mate and spices",297455641,4
+H5,2017,2,Export,842,USA,156,China,9,"Coffee, tea, mate and spices",22197144,0
+H5,2017,3,Re-Export,842,USA,156,China,9,"Coffee, tea, mate and spices",2545526,0
+H5,2017,1,Import,842,USA,156,China,10,Cereals,11744807,4
+H5,2017,2,Export,842,USA,156,China,10,Cereals,1348961712,4
+H5,2017,3,Re-Export,842,USA,156,China,10,Cereals,22491,0
+H5,2017,1,Import,842,USA,156,China,11,"Products of the milling industry; malt, starches, inulin, wheat gluten",49926737,4
+H5,2017,2,Export,842,USA,156,China,11,"Products of the milling industry; malt, starches, inulin, wheat gluten",9737492,0
+H5,2017,3,Re-Export,842,USA,156,China,11,"Products of the milling industry; malt, starches, inulin, wheat gluten",266570,0
+H5,2017,1,Import,842,USA,156,China,12,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit, industrial or medicinal plants; straw and fodder",272996594,4
+H5,2017,2,Export,842,USA,156,China,12,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit, industrial or medicinal plants; straw and fodder",12868864649,4
+H5,2017,3,Re-Export,842,USA,156,China,12,"Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit, industrial or medicinal plants; straw and fodder",14474583,0
+H5,2017,1,Import,842,USA,156,China,13,"Lac; gums, resins and other vegetable saps and extracts",240858313,4
+H5,2017,2,Export,842,USA,156,China,13,"Lac; gums, resins and other vegetable saps and extracts",39078620,0
+H5,2017,3,Re-Export,842,USA,156,China,13,"Lac; gums, resins and other vegetable saps and extracts",3105617,0
+H5,2017,1,Import,842,USA,156,China,14,Vegetable plaiting materials; vegetable products not elsewhere specified or included,31248859,4
+H5,2017,2,Export,842,USA,156,China,14,Vegetable plaiting materials; vegetable products not elsewhere specified or included,5432342,4
+H5,2017,3,Re-Export,842,USA,156,China,14,Vegetable plaiting materials; vegetable products not elsewhere specified or included,14816,0
+H5,2017,1,Import,842,USA,156,China,15,Animal or vegetable fats and oils and their cleavage products; prepared animal fats; animal or vegetable waxes,55401450,4
+H5,2017,2,Export,842,USA,156,China,15,Animal or vegetable fats and oils and their cleavage products; prepared animal fats; animal or vegetable waxes,64957920,0
+H5,2017,3,Re-Export,842,USA,156,China,15,Animal or vegetable fats and oils and their cleavage products; prepared animal fats; animal or vegetable waxes,2268982,0
+H5,2017,1,Import,842,USA,156,China,16,"Meat, fish or crustaceans, molluscs or other aquatic invertebrates; preparations thereof",759521454,4
+H5,2017,2,Export,842,USA,156,China,16,"Meat, fish or crustaceans, molluscs or other aquatic invertebrates; preparations thereof",40476352,0
+H5,2017,3,Re-Export,842,USA,156,China,16,"Meat, fish or crustaceans, molluscs or other aquatic invertebrates; preparations thereof",997734,0
+H5,2017,1,Import,842,USA,156,China,17,Sugars and sugar confectionery,170506593,4
+H5,2017,2,Export,842,USA,156,China,17,Sugars and sugar confectionery,79086346,0
+H5,2017,3,Re-Export,842,USA,156,China,17,Sugars and sugar confectionery,753664,0
+H5,2017,1,Import,842,USA,156,China,18,Cocoa and cocoa preparations,35317585,4
+H5,2017,2,Export,842,USA,156,China,18,Cocoa and cocoa preparations,27596683,0
+H5,2017,3,Re-Export,842,USA,156,China,18,Cocoa and cocoa preparations,209061,0
+H5,2017,1,Import,842,USA,156,China,19,"Preparations of cereals, flour, starch or milk; pastrycooks' products",223566400,4
+H5,2017,2,Export,842,USA,156,China,19,"Preparations of cereals, flour, starch or milk; pastrycooks' products",89330524,0
+H5,2017,3,Re-Export,842,USA,156,China,19,"Preparations of cereals, flour, starch or milk; pastrycooks' products",835979,0
+H5,2017,1,Import,842,USA,156,China,20,"Preparations of vegetables, fruit, nuts or other parts of plants",1236874270,4
+H5,2017,2,Export,842,USA,156,China,20,"Preparations of vegetables, fruit, nuts or other parts of plants",232384815,4
+H5,2017,3,Re-Export,842,USA,156,China,20,"Preparations of vegetables, fruit, nuts or other parts of plants",1531536,0
+H5,2017,1,Import,842,USA,156,China,21,Miscellaneous edible preparations,351436606,4
+H5,2017,2,Export,842,USA,156,China,21,Miscellaneous edible preparations,198521386,0
+H5,2017,3,Re-Export,842,USA,156,China,21,Miscellaneous edible preparations,12527351,0
+H5,2017,1,Import,842,USA,156,China,22,"Beverages, spirits and vinegar",78162135,4
+H5,2017,2,Export,842,USA,156,China,22,"Beverages, spirits and vinegar",184012561,4
+H5,2017,3,Re-Export,842,USA,156,China,22,"Beverages, spirits and vinegar",1773054,0
+H5,2017,1,Import,842,USA,156,China,23,"Food industries, residues and wastes thereof; prepared animal fodder",289173324,4
+H5,2017,2,Export,842,USA,156,China,23,"Food industries, residues and wastes thereof; prepared animal fodder",414124032,4
+H5,2017,3,Re-Export,842,USA,156,China,23,"Food industries, residues and wastes thereof; prepared animal fodder",379908,0
+H5,2017,1,Import,842,USA,156,China,24,Tobacco and manufactured tobacco substitutes,30697187,4
+H5,2017,2,Export,842,USA,156,China,24,Tobacco and manufactured tobacco substitutes,162683352,4
+H5,2017,3,Re-Export,842,USA,156,China,24,Tobacco and manufactured tobacco substitutes,26651,0
+H5,2017,1,Import,842,USA,156,China,25,"Salt; sulphur; earths, stone; plastering materials, lime and cement",478336583,4
+H5,2017,2,Export,842,USA,156,China,25,"Salt; sulphur; earths, stone; plastering materials, lime and cement",357218495,4
+H5,2017,3,Re-Export,842,USA,156,China,25,"Salt; sulphur; earths, stone; plastering materials, lime and cement",394877,0
+H5,2017,1,Import,842,USA,156,China,26,"Ores, slag and ash",59971580,4
+H5,2017,2,Export,842,USA,156,China,26,"Ores, slag and ash",1075672112,4
+H5,2017,3,Re-Export,842,USA,156,China,26,"Ores, slag and ash",427998,0
+H5,2017,1,Import,842,USA,156,China,27,"Mineral fuels, mineral oils and products of their distillation; bituminous substances; mineral waxes",680553347,4
+H5,2017,2,Export,842,USA,156,China,27,"Mineral fuels, mineral oils and products of their distillation; bituminous substances; mineral waxes",8572094620,4
+H5,2017,3,Re-Export,842,USA,156,China,27,"Mineral fuels, mineral oils and products of their distillation; bituminous substances; mineral waxes",103733914,0
+H5,2017,1,Import,842,USA,156,China,28,"Inorganic chemicals; organic and inorganic compounds of precious metals; of rare earth metals, of radio-active elements and of isotopes",1458351184,4
+H5,2017,2,Export,842,USA,156,China,28,"Inorganic chemicals; organic and inorganic compounds of precious metals; of rare earth metals, of radio-active elements and of isotopes",790106061,4
+H5,2017,3,Re-Export,842,USA,156,China,28,"Inorganic chemicals; organic and inorganic compounds of precious metals; of rare earth metals, of radio-active elements and of isotopes",18617572,0
+H5,2017,1,Import,842,USA,156,China,29,Organic chemicals,8039315794,4
+H5,2017,2,Export,842,USA,156,China,29,Organic chemicals,2809762468,4
+H5,2017,3,Re-Export,842,USA,156,China,29,Organic chemicals,40208526,0
+H5,2017,1,Import,842,USA,156,China,30,Pharmaceutical products,1487339208,4
+H5,2017,2,Export,842,USA,156,China,30,Pharmaceutical products,2448913700,4
+H5,2017,3,Re-Export,842,USA,156,China,30,Pharmaceutical products,359920201,0
+H5,2017,1,Import,842,USA,156,China,31,Fertilizers,188122324,4
+H5,2017,2,Export,842,USA,156,China,31,Fertilizers,103354646,4
+H5,2017,3,Re-Export,842,USA,156,China,31,Fertilizers,61774351,0
+H5,2017,1,Import,842,USA,156,China,32,"Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter; paints, varnishes; putty, other mastics; inks",555938731,4
+H5,2017,2,Export,842,USA,156,China,32,"Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter; paints, varnishes; putty, other mastics; inks",457213127,4
+H5,2017,3,Re-Export,842,USA,156,China,32,"Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter; paints, varnishes; putty, other mastics; inks",3213598,0
+H5,2017,1,Import,842,USA,156,China,33,"Essential oils and resinoids; perfumery, cosmetic or toilet preparations",1555989081,4
+H5,2017,2,Export,842,USA,156,China,33,"Essential oils and resinoids; perfumery, cosmetic or toilet preparations",523700582,4
+H5,2017,3,Re-Export,842,USA,156,China,33,"Essential oils and resinoids; perfumery, cosmetic or toilet preparations",21770449,0
+H5,2017,1,Import,842,USA,156,China,34,"Soap, organic surface-active agents; washing, lubricating, polishing or scouring preparations; artificial or prepared waxes, candles and similar articles, modelling pastes, dental waxes and dental preparations with a basis of plaster",499540294,4
+H5,2017,2,Export,842,USA,156,China,34,"Soap, organic surface-active agents; washing, lubricating, polishing or scouring preparations; artificial or prepared waxes, candles and similar articles, modelling pastes, dental waxes and dental preparations with a basis of plaster",622905996,4
+H5,2017,3,Re-Export,842,USA,156,China,34,"Soap, organic surface-active agents; washing, lubricating, polishing or scouring preparations; artificial or prepared waxes, candles and similar articles, modelling pastes, dental waxes and dental preparations with a basis of plaster",4414402,0
+H5,2017,1,Import,842,USA,156,China,35,Albuminoidal substances; modified starches; glues; enzymes,371875163,4
+H5,2017,2,Export,842,USA,156,China,35,Albuminoidal substances; modified starches; glues; enzymes,317320364,0
+H5,2017,3,Re-Export,842,USA,156,China,35,Albuminoidal substances; modified starches; glues; enzymes,7619897,0
+H5,2017,1,Import,842,USA,156,China,36,Explosives; pyrotechnic products; matches; pyrophoric alloys; certain combustible preparations,368697075,4
+H5,2017,2,Export,842,USA,156,China,36,Explosives; pyrotechnic products; matches; pyrophoric alloys; certain combustible preparations,63443804,4
+H5,2017,3,Re-Export,842,USA,156,China,36,Explosives; pyrotechnic products; matches; pyrophoric alloys; certain combustible preparations,227651,0
+H5,2017,1,Import,842,USA,156,China,37,Photographic or cinematographic goods,39099111,4
+H5,2017,2,Export,842,USA,156,China,37,Photographic or cinematographic goods,571300636,4
+H5,2017,3,Re-Export,842,USA,156,China,37,Photographic or cinematographic goods,15626444,0
+H5,2017,1,Import,842,USA,156,China,38,Chemical products n.e.c.,1225893664,4
+H5,2017,2,Export,842,USA,156,China,38,Chemical products n.e.c.,2445443098,4
+H5,2017,3,Re-Export,842,USA,156,China,38,Chemical products n.e.c.,50625778,0
+H5,2017,1,Import,842,USA,156,China,39,Plastics and articles thereof,17565122413,4
+H5,2017,2,Export,842,USA,156,China,39,Plastics and articles thereof,5660241898,4
+H5,2017,3,Re-Export,842,USA,156,China,39,Plastics and articles thereof,121796887,0
+H5,2017,1,Import,842,USA,156,China,40,Rubber and articles thereof,3735084352,4
+H5,2017,2,Export,842,USA,156,China,40,Rubber and articles thereof,708598579,4
+H5,2017,3,Re-Export,842,USA,156,China,40,Rubber and articles thereof,30937212,0
+H5,2017,1,Import,842,USA,156,China,41,Raw hides and skins (other than furskins) and leather,28058093,4
+H5,2017,2,Export,842,USA,156,China,41,Raw hides and skins (other than furskins) and leather,1131883940,4
+H5,2017,3,Re-Export,842,USA,156,China,41,Raw hides and skins (other than furskins) and leather,4888342,0
+H5,2017,1,Import,842,USA,156,China,42,"Articles of leather; saddlery and harness; travel goods, handbags and similar containers; articles of animal gut (other than silk-worm gut)",7716386559,4
+H5,2017,2,Export,842,USA,156,China,42,"Articles of leather; saddlery and harness; travel goods, handbags and similar containers; articles of animal gut (other than silk-worm gut)",77875007,4
+H5,2017,3,Re-Export,842,USA,156,China,42,"Articles of leather; saddlery and harness; travel goods, handbags and similar containers; articles of animal gut (other than silk-worm gut)",26798881,0
+H5,2017,1,Import,842,USA,156,China,43,Furskins and artificial fur; manufactures thereof,80370364,4
+H5,2017,2,Export,842,USA,156,China,43,Furskins and artificial fur; manufactures thereof,58402848,4
+H5,2017,3,Re-Export,842,USA,156,China,43,Furskins and artificial fur; manufactures thereof,11613581,0
+H5,2017,1,Import,842,USA,156,China,44,Wood and articles of wood; wood charcoal,4275231621,4
+H5,2017,2,Export,842,USA,156,China,44,Wood and articles of wood; wood charcoal,3198277328,4
+H5,2017,3,Re-Export,842,USA,156,China,44,Wood and articles of wood; wood charcoal,4505286,0
+H5,2017,1,Import,842,USA,156,China,45,Cork and articles of cork,27901231,4
+H5,2017,2,Export,842,USA,156,China,45,Cork and articles of cork,561968,4
+H5,2017,3,Re-Export,842,USA,156,China,45,Cork and articles of cork,7434,0
+H5,2017,1,Import,842,USA,156,China,46,"Manufactures of straw, esparto or other plaiting materials; basketware and wickerwork",337982570,4
+H5,2017,2,Export,842,USA,156,China,46,"Manufactures of straw, esparto or other plaiting materials; basketware and wickerwork",819978,4
+H5,2017,3,Re-Export,842,USA,156,China,46,"Manufactures of straw, esparto or other plaiting materials; basketware and wickerwork",637282,0
+H5,2017,1,Import,842,USA,156,China,47,Pulp of wood or other fibrous cellulosic material; recovered (waste and scrap) paper or paperboard,8144793,4
+H5,2017,2,Export,842,USA,156,China,47,Pulp of wood or other fibrous cellulosic material; recovered (waste and scrap) paper or paperboard,3358016933,4
+H5,2017,3,Re-Export,842,USA,156,China,47,Pulp of wood or other fibrous cellulosic material; recovered (waste and scrap) paper or paperboard,364341,0
+H5,2017,1,Import,842,USA,156,China,48,"Paper and paperboard; articles of paper pulp, of paper or paperboard",3593322595,4
+H5,2017,2,Export,842,USA,156,China,48,"Paper and paperboard; articles of paper pulp, of paper or paperboard",776485217,4
+H5,2017,3,Re-Export,842,USA,156,China,48,"Paper and paperboard; articles of paper pulp, of paper or paperboard",8115737,0
+H5,2017,1,Import,842,USA,156,China,49,"Printed books, newspapers, pictures and other products of the printing industry; manuscripts, typescripts and plans",2300322034,4
+H5,2017,2,Export,842,USA,156,China,49,"Printed books, newspapers, pictures and other products of the printing industry; manuscripts, typescripts and plans",153965796,4
+H5,2017,3,Re-Export,842,USA,156,China,49,"Printed books, newspapers, pictures and other products of the printing industry; manuscripts, typescripts and plans",3528645,0
+H5,2017,1,Import,842,USA,156,China,50,Silk,22902249,4
+H5,2017,2,Export,842,USA,156,China,50,Silk,5332729,4
+H5,2017,3,Re-Export,842,USA,156,China,50,Silk,61133,0
+H5,2017,1,Import,842,USA,156,China,51,"Wool, fine or coarse animal hair; horsehair yarn and woven fabric",22548458,4
+H5,2017,2,Export,842,USA,156,China,51,"Wool, fine or coarse animal hair; horsehair yarn and woven fabric",16894890,4
+H5,2017,3,Re-Export,842,USA,156,China,51,"Wool, fine or coarse animal hair; horsehair yarn and woven fabric",103404,0
+H5,2017,1,Import,842,USA,156,China,52,Cotton,237498275,4
+H5,2017,2,Export,842,USA,156,China,52,Cotton,1049167344,4
+H5,2017,3,Re-Export,842,USA,156,China,52,Cotton,727170,0
+H5,2017,1,Import,842,USA,156,China,53,Vegetable textile fibres; paper yarn and woven fabrics of paper yarn,38441960,4
+H5,2017,2,Export,842,USA,156,China,53,Vegetable textile fibres; paper yarn and woven fabrics of paper yarn,240556,4
+H5,2017,3,Re-Export,842,USA,156,China,53,Vegetable textile fibres; paper yarn and woven fabrics of paper yarn,79261,0
+H5,2017,1,Import,842,USA,156,China,54,Man-made filaments; strip and the like of man-made textile materials,554507811,4
+H5,2017,2,Export,842,USA,156,China,54,Man-made filaments; strip and the like of man-made textile materials,113010008,4
+H5,2017,3,Re-Export,842,USA,156,China,54,Man-made filaments; strip and the like of man-made textile materials,4364401,0
+H5,2017,1,Import,842,USA,156,China,55,Man-made staple fibres,467406279,4
+H5,2017,2,Export,842,USA,156,China,55,Man-made staple fibres,173606441,4
+H5,2017,3,Re-Export,842,USA,156,China,55,Man-made staple fibres,1440480,0
+H5,2017,1,Import,842,USA,156,China,56,"Wadding, felt and nonwovens, special yarns; twine, cordage, ropes and cables and articles thereof",654537653,4
+H5,2017,2,Export,842,USA,156,China,56,"Wadding, felt and nonwovens, special yarns; twine, cordage, ropes and cables and articles thereof",185722622,4
+H5,2017,3,Re-Export,842,USA,156,China,56,"Wadding, felt and nonwovens, special yarns; twine, cordage, ropes and cables and articles thereof",12261240,0
+H5,2017,1,Import,842,USA,156,China,57,Carpets and other textile floor coverings,647464905,4
+H5,2017,2,Export,842,USA,156,China,57,Carpets and other textile floor coverings,18905672,4
+H5,2017,3,Re-Export,842,USA,156,China,57,Carpets and other textile floor coverings,256840,0
+H5,2017,1,Import,842,USA,156,China,58,"Fabrics; special woven fabrics, tufted textile fabrics, lace, tapestries, trimmings, embroidery",310725701,4
+H5,2017,2,Export,842,USA,156,China,58,"Fabrics; special woven fabrics, tufted textile fabrics, lace, tapestries, trimmings, embroidery",12355180,4
+H5,2017,3,Re-Export,842,USA,156,China,58,"Fabrics; special woven fabrics, tufted textile fabrics, lace, tapestries, trimmings, embroidery",972040,0
+H5,2017,1,Import,842,USA,156,China,59,"Textile fabrics; impregnated, coated, covered or laminated; textile articles of a kind suitable for industrial use",556723750,4
+H5,2017,2,Export,842,USA,156,China,59,"Textile fabrics; impregnated, coated, covered or laminated; textile articles of a kind suitable for industrial use",112920118,4
+H5,2017,3,Re-Export,842,USA,156,China,59,"Textile fabrics; impregnated, coated, covered or laminated; textile articles of a kind suitable for industrial use",5995994,0
+H5,2017,1,Import,842,USA,156,China,60,Fabrics; knitted or crocheted,470910545,4
+H5,2017,2,Export,842,USA,156,China,60,Fabrics; knitted or crocheted,13859867,4
+H5,2017,3,Re-Export,842,USA,156,China,60,Fabrics; knitted or crocheted,352245,0
+H5,2017,1,Import,842,USA,156,China,61,Apparel and clothing accessories; knitted or crocheted,14889974580,4
+H5,2017,2,Export,842,USA,156,China,61,Apparel and clothing accessories; knitted or crocheted,41069619,4
+H5,2017,3,Re-Export,842,USA,156,China,61,Apparel and clothing accessories; knitted or crocheted,18353997,0
+H5,2017,1,Import,842,USA,156,China,62,Apparel and clothing accessories; not knitted or crocheted,13514606679,4
+H5,2017,2,Export,842,USA,156,China,62,Apparel and clothing accessories; not knitted or crocheted,45125109,4
+H5,2017,3,Re-Export,842,USA,156,China,62,Apparel and clothing accessories; not knitted or crocheted,27620954,0
+H5,2017,1,Import,842,USA,156,China,63,"Textiles, made up articles; sets; worn clothing and worn textile articles; rags",8428552425,4
+H5,2017,2,Export,842,USA,156,China,63,"Textiles, made up articles; sets; worn clothing and worn textile articles; rags",18921188,4
+H5,2017,3,Re-Export,842,USA,156,China,63,"Textiles, made up articles; sets; worn clothing and worn textile articles; rags",4636239,0
+H5,2017,1,Import,842,USA,156,China,64,Footwear; gaiters and the like; parts of such articles,14839501265,4
+H5,2017,2,Export,842,USA,156,China,64,Footwear; gaiters and the like; parts of such articles,108769823,4
+H5,2017,3,Re-Export,842,USA,156,China,64,Footwear; gaiters and the like; parts of such articles,6731169,0
+H5,2017,1,Import,842,USA,156,China,65,Headgear and parts thereof,1603877221,4
+H5,2017,2,Export,842,USA,156,China,65,Headgear and parts thereof,5117241,4
+H5,2017,3,Re-Export,842,USA,156,China,65,Headgear and parts thereof,781229,0
+H5,2017,1,Import,842,USA,156,China,66,"Umbrellas, sun umbrellas, walking-sticks, seat sticks, whips, riding crops; and parts thereof",616369611,4
+H5,2017,2,Export,842,USA,156,China,66,"Umbrellas, sun umbrellas, walking-sticks, seat sticks, whips, riding crops; and parts thereof",428019,4
+H5,2017,3,Re-Export,842,USA,156,China,66,"Umbrellas, sun umbrellas, walking-sticks, seat sticks, whips, riding crops; and parts thereof",13720,0
+H5,2017,1,Import,842,USA,156,China,67,"Feathers and down, prepared; and articles made of feather or of down; artificial flowers; articles of human hair",1710546879,4
+H5,2017,2,Export,842,USA,156,China,67,"Feathers and down, prepared; and articles made of feather or of down; artificial flowers; articles of human hair",7125149,4
+H5,2017,3,Re-Export,842,USA,156,China,67,"Feathers and down, prepared; and articles made of feather or of down; artificial flowers; articles of human hair",1722097,0
+H5,2017,1,Import,842,USA,156,China,68,"Stone, plaster, cement, asbestos, mica or similar materials; articles thereof",2125529210,4
+H5,2017,2,Export,842,USA,156,China,68,"Stone, plaster, cement, asbestos, mica or similar materials; articles thereof",266056019,4
+H5,2017,3,Re-Export,842,USA,156,China,68,"Stone, plaster, cement, asbestos, mica or similar materials; articles thereof",6172806,0
+H5,2017,1,Import,842,USA,156,China,69,Ceramic products,2613127544,4
+H5,2017,2,Export,842,USA,156,China,69,Ceramic products,120241058,4
+H5,2017,3,Re-Export,842,USA,156,China,69,Ceramic products,8751338,0
+H5,2017,1,Import,842,USA,156,China,70,Glass and glassware,3225949673,4
+H5,2017,2,Export,842,USA,156,China,70,Glass and glassware,424299135,4
+H5,2017,3,Re-Export,842,USA,156,China,70,Glass and glassware,21475447,0
+H5,2017,1,Import,842,USA,156,China,71,"Natural, cultured pearls; precious, semi-precious stones; precious metals, metals clad with precious metal, and articles thereof; imitation jewellery; coin",2957427838,4
+H5,2017,2,Export,842,USA,156,China,71,"Natural, cultured pearls; precious, semi-precious stones; precious metals, metals clad with precious metal, and articles thereof; imitation jewellery; coin",1179183149,4
+H5,2017,3,Re-Export,842,USA,156,China,71,"Natural, cultured pearls; precious, semi-precious stones; precious metals, metals clad with precious metal, and articles thereof; imitation jewellery; coin",145229734,0
+H5,2017,1,Import,842,USA,156,China,72,Iron and steel,681475244,4
+H5,2017,2,Export,842,USA,156,China,72,Iron and steel,1068261161,4
+H5,2017,3,Re-Export,842,USA,156,China,72,Iron and steel,6744851,0
+H5,2017,1,Import,842,USA,156,China,73,Iron or steel articles,12465018978,4
+H5,2017,2,Export,842,USA,156,China,73,Iron or steel articles,709744149,4
+H5,2017,3,Re-Export,842,USA,156,China,73,Iron or steel articles,51870782,0
+H5,2017,1,Import,842,USA,156,China,74,Copper and articles thereof,557026355,4
+H5,2017,2,Export,842,USA,156,China,74,Copper and articles thereof,1937440544,4
+H5,2017,3,Re-Export,842,USA,156,China,74,Copper and articles thereof,6855945,0
+H5,2017,1,Import,842,USA,156,China,75,Nickel and articles thereof,54250154,4
+H5,2017,2,Export,842,USA,156,China,75,Nickel and articles thereof,229514700,0
+H5,2017,3,Re-Export,842,USA,156,China,75,Nickel and articles thereof,3420883,0
+H5,2017,1,Import,842,USA,156,China,76,Aluminium and articles thereof,3536600494,4
+H5,2017,2,Export,842,USA,156,China,76,Aluminium and articles thereof,1512076551,4
+H5,2017,3,Re-Export,842,USA,156,China,76,Aluminium and articles thereof,5527589,0
+H5,2017,1,Import,842,USA,156,China,78,Lead and articles thereof,4673891,4
+H5,2017,2,Export,842,USA,156,China,78,Lead and articles thereof,2468004,0
+H5,2017,3,Re-Export,842,USA,156,China,78,Lead and articles thereof,667874,0
+H5,2017,1,Import,842,USA,156,China,79,Zinc and articles thereof,142290975,4
+H5,2017,2,Export,842,USA,156,China,79,Zinc and articles thereof,52486995,0
+H5,2017,3,Re-Export,842,USA,156,China,79,Zinc and articles thereof,2887572,0
+H5,2017,1,Import,842,USA,156,China,80,Tin; articles thereof,31619102,4
+H5,2017,2,Export,842,USA,156,China,80,Tin; articles thereof,6951115,4
+H5,2017,3,Re-Export,842,USA,156,China,80,Tin; articles thereof,34398,0
+H5,2017,1,Import,842,USA,156,China,81,"Metals; n.e.c., cermets and articles thereof",442723260,4
+H5,2017,2,Export,842,USA,156,China,81,"Metals; n.e.c., cermets and articles thereof",143348827,0
+H5,2017,3,Re-Export,842,USA,156,China,81,"Metals; n.e.c., cermets and articles thereof",2599873,0
+H5,2017,1,Import,842,USA,156,China,82,"Tools, implements, cutlery, spoons and forks, of base metal; parts thereof, of base metal",3849069095,4
+H5,2017,2,Export,842,USA,156,China,82,"Tools, implements, cutlery, spoons and forks, of base metal; parts thereof, of base metal",185694242,4
+H5,2017,3,Re-Export,842,USA,156,China,82,"Tools, implements, cutlery, spoons and forks, of base metal; parts thereof, of base metal",16412056,0
+H5,2017,1,Import,842,USA,156,China,83,Metal; miscellaneous products of base metal,5289962067,4
+H5,2017,2,Export,842,USA,156,China,83,Metal; miscellaneous products of base metal,188505854,4
+H5,2017,3,Re-Export,842,USA,156,China,83,Metal; miscellaneous products of base metal,25229156,0
+H5,2017,1,Import,842,USA,156,China,84,"Nuclear reactors, boilers, machinery and mechanical appliances; parts thereof",1.12339E+11,4
+H5,2017,2,Export,842,USA,156,China,84,"Nuclear reactors, boilers, machinery and mechanical appliances; parts thereof",12887689205,4
+H5,2017,3,Re-Export,842,USA,156,China,84,"Nuclear reactors, boilers, machinery and mechanical appliances; parts thereof",1943458421,0
+H5,2017,1,Import,842,USA,156,China,85,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers; television image and sound recorders and reproducers, parts and accessories of such articles",1.50044E+11,4
+H5,2017,2,Export,842,USA,156,China,85,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers; television image and sound recorders and reproducers, parts and accessories of such articles",12131710889,4
+H5,2017,3,Re-Export,842,USA,156,China,85,"Electrical machinery and equipment and parts thereof; sound recorders and reproducers; television image and sound recorders and reproducers, parts and accessories of such articles",4229098116,0
+H5,2017,1,Import,842,USA,156,China,86,"Railway, tramway locomotives, rolling-stock and parts thereof; railway or tramway track fixtures and fittings and parts thereof; mechanical (including electro-mechanical) traffic signalling equipment of all kinds",605560603,4
+H5,2017,2,Export,842,USA,156,China,86,"Railway, tramway locomotives, rolling-stock and parts thereof; railway or tramway track fixtures and fittings and parts thereof; mechanical (including electro-mechanical) traffic signalling equipment of all kinds",39412101,4
+H5,2017,3,Re-Export,842,USA,156,China,86,"Railway, tramway locomotives, rolling-stock and parts thereof; railway or tramway track fixtures and fittings and parts thereof; mechanical (including electro-mechanical) traffic signalling equipment of all kinds",1095522,0
+H5,2017,1,Import,842,USA,156,China,87,"Vehicles; other than railway or tramway rolling stock, and parts and accessories thereof",15558283853,4
+H5,2017,2,Export,842,USA,156,China,87,"Vehicles; other than railway or tramway rolling stock, and parts and accessories thereof",12854300667,4
+H5,2017,3,Re-Export,842,USA,156,China,87,"Vehicles; other than railway or tramway rolling stock, and parts and accessories thereof",380817359,0
+H5,2017,1,Import,842,USA,156,China,88,"Aircraft, spacecraft and parts thereof",518023477,4
+H5,2017,2,Export,842,USA,156,China,88,"Aircraft, spacecraft and parts thereof",16265664020,4
+H5,2017,3,Re-Export,842,USA,156,China,88,"Aircraft, spacecraft and parts thereof",552227359,0
+H5,2017,1,Import,842,USA,156,China,89,"Ships, boats and floating structures",145782095,4
+H5,2017,2,Export,842,USA,156,China,89,"Ships, boats and floating structures",25231247,4
+H5,2017,3,Re-Export,842,USA,156,China,89,"Ships, boats and floating structures",7200,0
+H5,2017,1,Import,842,USA,156,China,90,"Optical, photographic, cinematographic, measuring, checking, medical or surgical instruments and apparatus; parts and accessories",12319319182,4
+H5,2017,2,Export,842,USA,156,China,90,"Optical, photographic, cinematographic, measuring, checking, medical or surgical instruments and apparatus; parts and accessories",8816878866,4
+H5,2017,3,Re-Export,842,USA,156,China,90,"Optical, photographic, cinematographic, measuring, checking, medical or surgical instruments and apparatus; parts and accessories",1355555045,0
+H5,2017,1,Import,842,USA,156,China,91,Clocks and watches and parts thereof,805254820,4
+H5,2017,2,Export,842,USA,156,China,91,Clocks and watches and parts thereof,11534874,4
+H5,2017,3,Re-Export,842,USA,156,China,91,Clocks and watches and parts thereof,2354054,0
+H5,2017,1,Import,842,USA,156,China,92,Musical instruments; parts and accessories of such articles,564868519,4
+H5,2017,2,Export,842,USA,156,China,92,Musical instruments; parts and accessories of such articles,35014600,4
+H5,2017,3,Re-Export,842,USA,156,China,92,Musical instruments; parts and accessories of such articles,2478799,0
+H5,2017,1,Import,842,USA,156,China,93,Arms and ammunition; parts and accessories thereof,152676180,4
+H5,2017,2,Export,842,USA,156,China,93,Arms and ammunition; parts and accessories thereof,1590746,4
+H5,2017,3,Re-Export,842,USA,156,China,93,Arms and ammunition; parts and accessories thereof,152971,0
+H5,2017,1,Import,842,USA,156,China,94,"Furniture; bedding, mattresses, mattress supports, cushions and similar stuffed furnishings; lamps and lighting fittings, n.e.c.; illuminated signs, illuminated name-plates and the like; prefabricated buildings",34831216989,4
+H5,2017,2,Export,842,USA,156,China,94,"Furniture; bedding, mattresses, mattress supports, cushions and similar stuffed furnishings; lamps and lighting fittings, n.e.c.; illuminated signs, illuminated name-plates and the like; prefabricated buildings",281082917,4
+H5,2017,3,Re-Export,842,USA,156,China,94,"Furniture; bedding, mattresses, mattress supports, cushions and similar stuffed furnishings; lamps and lighting fittings, n.e.c.; illuminated signs, illuminated name-plates and the like; prefabricated buildings",26700241,0
+H5,2017,1,Import,842,USA,156,China,95,"Toys, games and sports requisites; parts and accessories thereof",26740247796,4
+H5,2017,2,Export,842,USA,156,China,95,"Toys, games and sports requisites; parts and accessories thereof",190405597,4
+H5,2017,3,Re-Export,842,USA,156,China,95,"Toys, games and sports requisites; parts and accessories thereof",19188866,0
+H5,2017,1,Import,842,USA,156,China,96,Miscellaneous manufactured articles,3269268706,4
+H5,2017,2,Export,842,USA,156,China,96,Miscellaneous manufactured articles,68832933,4
+H5,2017,3,Re-Export,842,USA,156,China,96,Miscellaneous manufactured articles,13648958,0
+H5,2017,1,Import,842,USA,156,China,97,Works of art; collectors' pieces and antiques,285089799,4
+H5,2017,2,Export,842,USA,156,China,97,Works of art; collectors' pieces and antiques,92770907,4
+H5,2017,3,Re-Export,842,USA,156,China,97,Works of art; collectors' pieces and antiques,34427255,0
+H5,2017,1,Import,842,USA,156,China,99,Commodities not specified according to kind,6219818322,0
+H5,2017,2,Export,842,USA,156,China,99,Commodities not specified according to kind,1172361111,0
+H5,2017,3,Re-Export,842,USA,156,China,99,Commodities not specified according to kind,64112,0
