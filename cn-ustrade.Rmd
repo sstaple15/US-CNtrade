@@ -1,29 +1,37 @@
-# Data Visualization: Victims of US-China Trade War
-# Code for second week of data viz portfolio project:
-# Data exploration and 3 graphs with narratives
-# Author: Stephen Stapleton
+---
+title: "Who's the Victim in a US-China Trade War?"
+author: "Authored by Stephen Stapleton"
+date: "January 27, 2019"
+output:
+  html_document:
+    code_folding: hide
+---
 
+```{r setup, include=FALSE}
 library(tidyverse)
 library(ggplot2)
 library(zoo)
 library(dplyr)
 library(here)
+library(readxl)
+library(ggrepel)
+library(scales)
+```
 
-#########################################################
-# Create intro line graph detailing US-China trade balance
-#########################################################
+## Introduction
 
+Trade wars tend to captivate the media and the broader public, with flights of coverage going through the chaotic highs and lows of retaliatory and conciliatory actions. In such moments, it is often difficult to decouple the national drama from the facts of what a trade war truly is, and, perhaps more importantly, who is left paying the tab when a new trade equilibrium is reached. This project is intended to provide a short respite from the back and forth, and to go into the specifics of what a trade war means for the American people. My mission is to go deep into the numbers, and to give some of the best estimates as to what changes in the global market we may expect, and what regions are likely to be hit hardest with job layoffs and rising costs.
+
+## First, why China?
+
+The question is a legitimate one, and is the best place to start to give an idea as to why this trade war began. When the Chinese market first opened up in earnest to the world, it provided an opportunity for many companies looking for cheap labor to make a substantial profit by producing cheap and selling at normal prices to developed nation consumers. Since then, trade between China and the World has exploded, lifting billions out of poverty in China and causing substantial drops in the price of many consumer goods in the United States. This has been a net contributor to American households, making many consumer electronics attainable for even lower-income households. The United State runs the largest trade deficit in the World with China, since as a nation we buy substantially more than we sell to them. Part of this growing trend was China's entry into the World Trade Organization in 2001, which eliminated many of the trade barriers that restricted free trade. While weighting our trade balances by gross domestic product (GDP) indicates this imbalance is higher per capita in many other nations, policymakers nevertheless have expressed concern that without intervention, this imbalance will continue to widen.
+
+```{r fig.width = 9, warning = F, message = F}
 # Source: https://www.census.gov/foreign-trade/balance/index.html
 USall <- read_csv('country.csv')
 
 # Parse dates for use in ggplot
 USall$new_date <- as.Date(as.yearmon(USall$date))
-
-# Use only if interested in cumulative trade deficit
-#USall %<>%
-#  arrange(cty_code,new_date) %>%
-#  group_by(cty_code) %>%
-#  mutate(roll_def = cumsum(deficit))
 
 # Redefine variable deficit to trade balance
 USall$trd_bal <- -USall$deficit
@@ -65,19 +73,11 @@ ggplot(USyr, aes(x = year, y = trd_bal,
        title = 'The US-China trade gap stands out among US trade relationships',
        subtitle = 'In nominal terms, the deficit trends downward after China entered the World Trade Organization in December 2001, \nquadrupling since 2000. While population weighting reduces the deficit somewhat, it does not change this trend.', 
        caption = 'Data Source: United States Census Bureau')
+```
 
-# Close out this section, clean house
-ggsave('us_balance.pdf')
-rm(USall)
-rm(USuni)
-rm(USyr)
+Breaking the trade relationship down to the state level, China runs a surplus with many of its primary state trading partners. A balance-trade line shows most states with China as their primary foreign trade partner run a deficit, with Washington State a notable outlier. Many states rely substantially on trade with China as a part of their local economy; California, Illinois, Washington, and Georgia each attribute roughly five to eight percent of their state GDP to trade with China (imports and exports). These states are then ones with particularly more to lose from a US-China trade war, and will be explored in greater detail as this project continues. 
 
-#########################################################
-# Create bubble graph of by-state trade relation to China
-#########################################################
-
-library(readxl)
-
+``` {r fig.width = 9, warning = F, message = F}
 # source: https://www.census.gov/foreign-trade/statistics/state/data/index.html
 EXall <- read_excel('exctyall.xls',
             range = cell_rows(5:1436),
@@ -142,25 +142,69 @@ ggplot(ImExCN, aes(x = IMval2017, y = EXval2017,
   theme(legend.position = c(.15, .66), legend.background = element_rect(fill=NA)) +
   scale_fill_manual(values = c('grey', 'red')) +
   geom_text_repel(aes(label=ifelse(share_gdp > 4 & trd_main == "Yes",as.character(statename),'')),hjust=.5, vjust=-2, size = 3) +
-  annotate("text", x = 9.25, y = 12.25, angle = 65, label = "Balanced-Trade Line") +
+  annotate("text", x = 9.25, y = 12.25, angle = 60, label = "Balanced-Trade Line") +
   scale_radius(range = c(1,12)) +
   labs(x = 'Log Imports (billions USD)', y = 'Exports (billions USD)',
        title = 'The states rely heavily on Chinese market access for imports and exports',
-       subtitle = 'In 2017, a plurality of states counted China their primary trade partner, with imports and exports \n with China alone representing four to eight percent of state gross domestic product (GDP). \nThe dotted balanced-trade line indicates very few states run a surplus with China.', 
+       subtitle = 'In 2017, a plurality of states counted China their primary trade partner, with these imports and exports alone representing four to \neight percent of state gross domestic product (GDP). The dotted balanced-trade line indicates very few states run a surplus.', 
        caption = 'Data Source: United States Census Bureau & Bureau of Economic Analysis')
+```
 
-# save plot and clean house
-ggsave('state_balance.pdf')
-rm(EXall)
-rm(IMall)
-rm(ImEx)
-rm(ImExCN)
-rm(gdp)
+## What does a trade war entail for these states?
 
-#########################################################
-# Create national breakdown of trade by commodity type
-#########################################################
+Microeconomic theory can be of some help to us here in describing the fundamental mechanisms operating during a trade war. Domestic businesses are usually price-takers from a global market, which with China's help has made many goods cheaper. As a result, more consumers have been able to buy cheaper goods. When a tariff is introduced, prices go up and quantity goes down, which hurts the consumer but may help domestic producers be better competitive. However, we lose some potential surplus in dead weight losses, which ends up hurting consumers, producers, and the government in the long run.
 
+``` {r fig.width = 9, warning = F, message = F}
+# credit to Andrew Heiss for creating this package: https://github.com/andrewheiss/reconPlots
+library(devtools)
+library(reconPlots)
+
+line1 <- data.frame(Hmisc::bezier(c(10, 80, 90), c(10, 50, 90)))
+line2 <- data.frame(Hmisc::bezier(c(10, 30, 90), c(90, 30, 10)))
+line3 <- data.frame(Hmisc::bezier(c(0, 100), c(15, 15)))
+line4 <- data.frame(Hmisc::bezier(c(0, 100), c(25, 25)))
+
+line_intersect <- as.data.frame(curve_intersect(line1, line2))
+base_intersect1 <- as.data.frame(curve_intersect(line1, line3))
+base_intersect2 <- as.data.frame(curve_intersect(line2, line3))
+new_intersect1 <- as.data.frame(curve_intersect(line1, line4))
+new_intersect2 <- as.data.frame(curve_intersect(line2, line4))
+
+ggplot(mapping = aes(x = x, y = y)) +
+  geom_path(data = line1, color = "red", size = 1) +
+  geom_path(data = line2, color = "blue", size = 1) +
+  geom_path(data = line3, color = "black", linetype = 'dashed', size = 1) +
+  geom_path(data = line4, color = "black", size = 1) +
+  geom_point(data = base_intersect1, size = 2) +
+  geom_point(data = base_intersect2, size = 2) +
+  geom_ribbon(data = subset(line2, line2$x <= 58.51075),
+      aes(ymin = 25, ymax = y), fill = 'light blue', alpha = .2) +
+  geom_ribbon(data = subset(line1, line1$x <= 34.13912),
+      aes(ymin = y, ymax = 25), fill = 'red', alpha = .2) +
+  geom_segment(data = new_intersect1,
+      aes(x = x, y = 0, xend = x, yend = y), lty = "dotted") +
+  geom_segment(data = new_intersect2,
+      aes(x = x, y = 0, xend = x, yend = y), lty = "dotted") +  coord_equal() +
+  theme_classic() +
+  annotate("text", x = 85, y = 27.5, label = 'World Price + Tariffs', color = 'black') +
+  annotate("text", x = 75, y = 55, angle = 50, label = 'Domestic Supply', color = 'red') +
+  annotate("text", x = 30, y = 60, angle = -60, label = 'Demand', color = 'blue') +
+  annotate("text", x = 47, y = 20, label = 'Lost Consumer Surplus', color = 'black', size = 3) +
+  annotate("text", x = 92, y = 17.5, label = 'World Price', color = 'black') +
+  annotate("text", x = 25, y = 35, label = 'Consumer Surplus', color = 'blue', size = 3) +
+  labs(x = 'Quantity', y = 'Price',
+       title = 'Theory suggests tariffs hurt consumers but may help domestic suppliers',
+       subtitle = 'With a given imported good, consumers are benefiting from low costs and high quantity. \nWhen tariffs push up the outside price, quantity goes down and prices go up, \nhurting consumers while providing relatively little benefit to domestic businesses.', 
+       caption = 'Credit where credit is due: Andrew Heiss for his relevant methodology')
+```
+
+## Which industries are at risk?
+
+When we talk about prices and potential job losses, it is always important to say that goods are in an entire ecosystem that can adapt to new environmets. That being said, there are several industries more likely to experience price increases in the coming year. Particularly poignant are consumer electronics and other staples of the modern American. Twenty-five percent tariffs on these goods will likely be passed on to consumers.
+
+When it comes to job loss, tariffs exacted by China are generally bad for hubs of old industry and rural production, such as the rust belt and wide swaths of the midwest. These industries will find fewer places to bring goods to market, and will likely restrict employment numbers or cut back on current employees.
+
+``` {r fig.width = 9, warning = F, message = F }
 # source: https://comtrade.un.org/data/
 com <- read_csv('comtrade.csv')
 
@@ -263,7 +307,6 @@ com_fam_im$tariff <- ifelse(com_fam_im$`Commodity Code` %in% c(44, 83, 42, 29, 9
                      'No Tariff Set')))
 
 # Plot comparative trade in commodity groups nationally
-library(scales)
 ggplot(com_fam_ex, aes(`Commodity`, `Trade Value`)) +
   geom_col(aes(fill = tariff), color = 'black', width = 0.8) +
   coord_flip() +
@@ -277,10 +320,9 @@ ggplot(com_fam_ex, aes(`Commodity`, `Trade Value`)) +
        title = 'US exports to China come from the rust belt and rural industries',
        subtitle = 'As of 2017, US exports to China mostly consist of vehicles and agricultural products - both primarily \nfrom rural and midwest industrial hubs. These regions have been targeted by Chinese tariffs.', 
        caption = 'Data Source: UN Comtrade International Trade Statistics Database')
+```
 
-# save plot
-ggsave('nation_exports.pdf')
-
+``` {r fig.width = 9, warning = F, message = F }
 ggplot(com_fam_im, aes(`Commodity`, `Trade Value`)) +
   geom_col(aes(fill = tariff), color = 'black', width = 0.8) +
   coord_flip() +
@@ -294,58 +336,5 @@ ggplot(com_fam_im, aes(`Commodity`, `Trade Value`)) +
        title = 'Most US imports from China are consumer electronics targeted by current tariffs',
        subtitle = 'As of 2017, Chinese imports were most modern consumer staples, including electronics and household \nappliances. The Trump administration has imposed 25 percent tariffs on most of these goods.', 
        caption = 'Data Source: UN Comtrade International Trade Statistics & Personally Compiled Tariffs Listings')
+```
 
-# save plot
-ggsave('nation_imports.pdf')
-
-# clean house
-rm(com)
-rm(com_fam)
-rm(com_fam_ex)
-rm(com_fam_im)
-
-#########################################################
-# Create simple supply-demand example of what tariffs do
-#########################################################
-
-# credit to Andrew Heiss for creating this package: https://github.com/andrewheiss/reconPlots
-library(devtools)
-library(reconPlots)
-
-line1 <- data.frame(Hmisc::bezier(c(10, 80, 90), c(10, 50, 90)))
-line2 <- data.frame(Hmisc::bezier(c(10, 30, 90), c(90, 30, 10)))
-line3 <- data.frame(Hmisc::bezier(c(0, 100), c(15, 15)))
-line4 <- data.frame(Hmisc::bezier(c(0, 100), c(25, 25)))
-
-line_intersect <- as.data.frame(curve_intersect(line1, line2))
-base_intersect1 <- as.data.frame(curve_intersect(line1, line3))
-base_intersect2 <- as.data.frame(curve_intersect(line2, line3))
-new_intersect1 <- as.data.frame(curve_intersect(line1, line4))
-new_intersect2 <- as.data.frame(curve_intersect(line2, line4))
-
-ggplot(mapping = aes(x = x, y = y)) +
-  geom_path(data = line1, color = "red", size = 1) +
-  geom_path(data = line2, color = "blue", size = 1) +
-  geom_path(data = line3, color = "black", linetype = 'dashed', size = 1) +
-  geom_path(data = line4, color = "black", size = 1) +
-  geom_point(data = base_intersect1, size = 2) +
-  geom_point(data = base_intersect2, size = 2) +
-  geom_ribbon(data = subset(line2, line2$x <= 58.51075),
-      aes(ymin = 25, ymax = y), fill = 'light blue', alpha = .2) +
-  geom_ribbon(data = subset(line1, line1$x <= 34.13912),
-      aes(ymin = y, ymax = 25), fill = 'red', alpha = .2) +
-  geom_segment(data = new_intersect1,
-      aes(x = x, y = 0, xend = x, yend = y), lty = "dotted") +
-  geom_segment(data = new_intersect2,
-      aes(x = x, y = 0, xend = x, yend = y), lty = "dotted") +  coord_equal() +
-  theme_classic() +
-  annotate("text", x = 85, y = 27.5, label = 'World Price + Tariffs', color = 'black') +
-  annotate("text", x = 75, y = 55, angle = 50, label = 'Domestic Supply', color = 'red') +
-  annotate("text", x = 30, y = 60, angle = -60, label = 'Demand', color = 'blue') +
-  annotate("text", x = 47, y = 20, label = 'Lost Consumer Surplus', color = 'black', size = 3) +
-  annotate("text", x = 92, y = 17.5, label = 'World Price', color = 'black') +
-  annotate("text", x = 25, y = 35, label = 'Consumer Surplus', color = 'blue', size = 3) +
-  labs(x = 'Quantity', y = 'Price',
-       title = 'Theory suggests tariffs hurt consumers but may help domestic suppliers',
-       subtitle = 'With a given imported good, consumers are benefiting from low costs and high quantity. \nWhen tariffs push up the outside price, quantity goes down and prices go up, \nhurting consumers while providing relatively little benefit to domestic businesses.', 
-       caption = 'Credit where credit is due: Andrew Heiss for his relevant methodology')
