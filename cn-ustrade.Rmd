@@ -44,11 +44,11 @@ theme_set(theme_staples)
 
 ## Introduction
 
-Trade wars tend to captivate the media and the broader public, with flights of coverage going through the chaotic highs and lows of retaliatory and conciliatory action. In such moments, it is often difficult to decouple the national drama from the facts of what a trade war truly is, and, perhaps more importantly, who is left paying the tab when a new trade equilibrium is reached. This project is intended to provide a short respite from the back and forth, and to go into the specifics of what a trade war means for the American people. My mission is to go deep into the numbers, and to give some of the best estimates as to what changes in the global market we may expect, and what regions are likely to be hit hardest with job layoffs and rising costs.
+Trade wars often captivate the media and broader public discourse, with flights of coverage going through the chaotic highs and lows of retaliatory and conciliatory action. In such moments, it is often difficult to decouple the national drama from the facts of what a trade war truly is, and, perhaps more importantly, who is left paying the tab when a new trade equilibrium is reached. This project is intended to provide a short respite from the back and forth, and to go into the specifics of what a trade war means for the American people. My mission is to present the hard numbers, and to give some of the best estimates as to what changes in the global market we may expect, and what regions are likely to be hit hardest with job layoffs and rising costs.
 
 ## First, why China?
 
-The question is a legitimate one, and is the best place to start to give an idea as to why this trade war began. When the Chinese market first opened up in earnest to the world, it provided an opportunity for many companies looking for cheap labor to make a substantial profit by producing cheap and selling at normal prices to developed nation consumers. Since then, trade between China and the World has exploded, lifting billions out of poverty in China and causing substantial drops in the price of many consumer goods in the United States. This has been a net contributor to American households, making many consumer electronics attainable for even lower-income households. The United State runs the largest trade deficit in the World with China, since as a nation we buy substantially more than we sell to them. Part of this growing trend was China's entry into the World Trade Organization in 2001, which eliminated many of the trade barriers that restricted free trade. While weighting our trade balances by gross domestic product (GDP) indicates this imbalance is higher per capita in many other nations, policymakers nevertheless have expressed concern that without intervention, this imbalance will continue to widen.
+The question is a legitimate one, and is the best place to start when grasping the scope of effect from a trade war. When the Chinese market first opened up in earnest to the world, it provided an opportunity for many companies looking for cheap labor to make a substantial profit by producing cheap and selling to developed nation consumers. Since then, trade between China and the World has exploded, lifting billions out of poverty in China and enabling substantial drops in the price of most consumer goods in the United States. As such, demand in the United States for cheaper Chinese goods has led to greater and greater import levels.  The United States now runs the largest trade deficit in the World with China, since as a nation we buy substantially more than we sell. Part of this growing trend was China's entry into the World Trade Organization in 2001, which eliminated many of the trade barriers that restricted free trade. While weighting our trade balances by gross domestic product (GDP) indicates this imbalance is higher per capita in many other nations, policymakers nevertheless have expressed concern that without intervention, this imbalance will continue to widen.
 
 ```{r fig.width = 9, warning = F, message = F, dpi=300}
 # Source: https://www.census.gov/foreign-trade/balance/index.html
@@ -99,7 +99,7 @@ ggplot(USyr, aes(x = year, y = trd_bal,
        caption = 'Data Source: United States Census Bureau')
 ```
 
-Breaking the trade relationship down to the state level, China runs a surplus with many of its primary state trading partners. A balance-trade line shows most states with China as their primary foreign trade partner run a deficit, with Washington State a notable outlier. Many states rely substantially on trade with China as a part of their local economy; California, Illinois, Washington, and Georgia each attribute roughly five to eight percent of their state GDP to trade with China (imports and exports). These states are then ones with particularly more to lose from a US-China trade war, and will be explored in greater detail as this project continues. 
+Breaking the trade relationship down to the state level, China runs a surplus with many of its primary state trading partners. A balance-trade line shows most states having China as their primary foreign trade partner run a deficit, with Washington State a notable outlier. Many states rely substantially on trade with China as a part of their local economy. California, Illinois, Washington, Georgia, and Tennessee each attribute roughly five to eight percent of their state GDP to trade with China (imports and exports), whereas Louisiana alone runs a substantive surplus. These states are then ones with particularly more to lose from a US-China trade war, and will be explored in greater detail as this project continues.
 
 ``` {r fig.width = 9, warning = F, message = F, dpi=300}
 # source: https://www.census.gov/foreign-trade/statistics/state/data/index.html
@@ -174,7 +174,7 @@ ggplot(ImExCN, aes(x = IMval2017, y = EXval2017,
 
 ## What does a trade war entail for these states?
 
-Microeconomic theory can be of some help to us here in describing the fundamental mechanisms operating during a trade war. Domestic businesses are usually price-takers from a global market, which with China's help has made many goods cheaper. As a result, more consumers have been able to buy cheaper goods. When a tariff is introduced, prices go up and quantity goes down, which hurts the consumer but may help domestic producers be better competitive. However, we lose some potential surplus in dead weight losses, which ends up hurting consumers, producers, and the government in the long run.
+Microeconomic theory can be of some help to us here in describing the fundamental mechanisms operating during a trade war. Domestic businesses are usually price-takers from a global market, which with China's help has made many goods cheaper. As a result, more consumers have been able to buy cheaper goods. When a tariff is introduced, prices go up and quantity goes down, hurting the consumer by increasings costs and threfore reducing the number of people who may buy certian goods. Meanwhile, domestic suppliers can become more competitive, and can begin to reap the benefits of higher consumer costs. However, we lose some potential surplus in dead weight losses, which ends up hurting consumers, producers, and the government in the long run.
 
 ``` {r fig.width = 9, warning = F, message = F, dpi=300}
 # credit to Andrew Heiss for creating this package: https://github.com/andrewheiss/reconPlots
@@ -222,11 +222,9 @@ ggplot(mapping = aes(x = x, y = y)) +
        caption = 'Credit where credit is due: Andrew Heiss for his relevant methodology')
 ```
 
-## Which industries are at risk?
+## So, prices are going up... but which ones?
 
-When we talk about prices and potential job losses, it is always important to say that goods are in an entire ecosystem that can adapt to new environmets. That being said, there are several industries more likely to experience price increases in the coming year. Particularly poignant are consumer electronics and other staples of the modern American. Twenty-five percent tariffs on these goods will likely be passed on to consumers.
-
-When it comes to job loss, tariffs exacted by China are generally bad for hubs of old industry and rural production, such as the rust belt and wide swaths of the midwest. These industries will find fewer places to bring goods to market, and will likely restrict employment numbers or cut back on current employees.
+General equilibrium theory suggests that prices for consumer goods will go up. However, the exact goods impacted by a trade war depend on both the relative proportion of Chinese goods making up American consumption in each category, as well as the specific tariff policy of the U.S. administration. The vast majority of Chinese imports to the U.S. are in consumer electronics and appliances, trade in which totalled over $150 billion in 2017. This includes nearly all small electronics and household appliances, as well as the parts imported to produce motor vehicles by U.S. manufacturers. The three rounds of 25 percent tariffs set by the Trump administration impact many of the largest import groups, including applances, motor vehicles, and furniture. Many of the categories subject to no current tariff in the figure below have been threatened, which might also play a role in speculative price increases by corporations.
 
 ``` {r fig.width = 9, warning = F, message = F, dpi=300}
 # source: https://comtrade.un.org/data/
@@ -330,6 +328,88 @@ com_fam_im$tariff <- ifelse(com_fam_im$`Commodity Code` %in% c(44, 83, 42, 29, 9
                      ifelse(com_fam_im$`Commodity Code` %in% c(90, 87, 84, 85), 'Round 1 (Jul 2018)', 
                      'No Tariff Set')))
 
+ggplot(com_fam_im, aes(`Commodity`, `Trade Value`)) +
+  geom_col(aes(fill = tariff), color = 'black', width = 0.8) +
+  coord_flip() +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
+        legend.position = c(.7, .40)) +
+  scale_y_continuous(labels = comma, breaks = seq(0, 150, 50), expand = c(0,0)) +
+  scale_fill_manual("Tariffs Set by US", values = c('#00FDFF', '#CC2414', '#FF6B40', 'light grey')) +
+  labs(x = '', y = 'TRADE IMPORTS (BILLIONS $USD)',
+       title = 'Most US imports from China are consumer electronics targeted by current tariffs',
+       subtitle = 'As of 2017, Chinese imports were most modern consumer staples, including electronics and household \nappliances. The Trump administration has imposed 25 percent tariffs on most of these goods.', 
+       caption = 'Data Source: UN Comtrade International Trade Statistics & Personally Compiled Tariffs Listings')
+```
+
+Preliminary trade data show that these price increases have already begun, despite there being temporary holds on full tariff enactments until March 2018. The red hues on the graph below signify percentage price increases month to month, whereas blue hues signify prices falling for each good. As the horizon chart for toys shows, non-tariffed goods have followed a downward trend in price since 2016. In stark comparison are now-tariffed goods, which show sharp price increases beginning in 2018, in-line with the speculation and enactment of the tariffs in question. Most notable is the trend for appliances. Even in cases where prices have not increases, this general downward trend has stagnated. Multiple goods have returned to early 2017 levels. (THESE GRAPHS WILL BE AUGMENTED TO DATA AS THEY CONTINUE TO BE RELEASED. ALSO, I STILL NEED TO FIGURE OUT HOW TO PRESENT WITH A LEGEND, ALEX ANY ADVICE?)
+
+``` {r fig.width = 9, fig.height = 6, warning = F, message = F, dpi=300}
+
+# Data source: https://beta.bls.gov/dataViewer/view/8de38039b69045d6ab7fe131c44312cb
+# Bureau of Labor Statistics Consumer Price Index Series
+bls <- read_csv('bls_cpi.csv')
+bls$new_date <- as.Date(as.yearmon(bls$date))
+
+# Create prct diff from base date (Jan 2016) to control for initial difference in CPI
+bls$prct_base <- (bls$cpi/bls$base - 1)*100
+
+# Create rolling prct change from last month
+bls$prct_chng <- (bls$cpi/lag(bls$cpi) - 1)*100
+bls$prct_chng <- ifelse(bls$date == 'Jan 2016', NA, bls$prct_chng)
+
+# rename, since categories are just horrible
+bls$id <- ifelse(bls$id == 'CUSR0000SA311', 'Clothing & Apparel',
+          ifelse(bls$id == 'CUSR0000SAD', 'All Durable Goods',
+          ifelse(bls$id == 'CUSR0000SAH3', 'Furniture & Bedding',
+          ifelse(bls$id == 'CUSR0000SEAE', 'All Footwear',
+          ifelse(bls$id == 'CUSR0000SEHK', 'Appliances',
+          ifelse(bls$id == 'CUSR0000SEHM', 'Tools & Hardware',
+          ifelse(bls$id == 'CUSR0000SERC', 'Sporting Goods',
+          ifelse(bls$id == 'CUSR0000SERE01', 'Toys',
+          ifelse(bls$id == 'CUSR0000SETA', 'Motor Vehicles',
+          ifelse(bls$id == 'CUSR0000SETC', 'Vehicle Parts & Equipment',
+            bls$id))))))))))
+
+# Set the bands for horizon plot
+max.y <- max(abs(bls$prct_chng), na.rm=T)
+nbands = 3
+hrzn_scale <- max(max.y/nbands)
+h1 <- hrzn_scale
+h2 <- hrzn_scale*2
+
+bls$ypos1 <- ifelse(bls$prct_chng > 0, pmin(bls$prct_chng, h1), 0)
+bls$ypos2 <- ifelse(bls$prct_chng > h1, pmin(bls$prct_chng-h1, h1), 0)
+bls$ypos3 <- ifelse(bls$prct_chng > h2, pmin(bls$prct_chng-h2, h1), 0)
+bls$yneg1 <- ifelse(bls$prct_chng < 0, pmin(-bls$prct_chng, h1), 0)
+bls$yneg2 <- ifelse(bls$prct_chng < -h1, pmin(-bls$prct_chng-h1, h1), 0)
+bls$yneg3 <- ifelse(bls$prct_chng < -h2, pmin(-bls$prct_chng-h2, h1), 0)
+
+# Divide into explanatory graph and full graph
+bls <- subset(bls, !is.na(bls$prct_chng))
+bls_dur <- subset(bls, bls$id == "All Durable Goods")
+bls_all <- subset(bls, bls$id != "All Durable Goods")
+
+# Create graph of all goods in top 9 categories of imports
+ggplot(bls, aes(x = new_date)) +
+  geom_ribbon(aes(ymin = 0, ymax = ypos1), fill='#fecc5c', alpha=0.25) +
+  geom_ribbon(aes(ymin = 0, ymax = ypos2), fill='#FF6B40', alpha=0.25) +
+  geom_ribbon(aes(ymin = 0, ymax = ypos3), fill='#CC2414', alpha=0.25) +
+  geom_ribbon(aes(ymin = 0, ymax = yneg1), fill='#00FDFF', alpha=0.25) +
+  geom_ribbon(aes(ymin = 0, ymax = yneg2), fill='#146ACC', alpha=0.25) +
+  facet_grid(id ~ .) +
+  theme(strip.text.y = element_text(angle = 0)) +
+  labs(x = 'YEAR', y = 'PRICE % CHANGE BY MONTH',
+       title = 'Month-to-month changes in consumer prices show tariffs already impacting goods',
+       subtitle = 'As of December 2018, several imported goods with tariffs levied have seen upticks (red hues) in real price, particularly appliances. This includes \neverything from washing machines to iphones. Prior to the trade war, goods were showing a general downward trend (blue hue) in costs.', 
+       caption = 'Data Sources: Bureau of Labor Statistics Consumer Price Index Series')
+
+```
+
+## Meanwhile, U.S. industries also take a hit
+
+U.S. consumers aren't the only ones experiencing preliminarily negative consequences from the trade war. Producers in the United States now pay higher costs for raw materials, particuarly steel, some of which they are unable or unwilling to pass on to consumers. But in addition to this, Chinese tariffs on their exports are likely to take their toll. China is still the largest importer of U.S. goods, and as a result of the trade war several large categories of exports have had 25 percent tariffs levied against them. Those goods most impacted come from rural and old industrial communities, often the most sensitive to price shifts when it comes to laying off workers and outsourcing labor.
+
+``` {r fig.width = 9, warning = F, message = F, dpi=300}
 # Plot comparative trade in commodity groups nationally
 ggplot(com_fam_ex, aes(`Commodity`, `Trade Value`)) +
   geom_col(aes(fill = tariff), color = 'black', width = 0.8) +
@@ -343,6 +423,9 @@ ggplot(com_fam_ex, aes(`Commodity`, `Trade Value`)) +
        subtitle = 'As of 2017, US exports to China mostly consist of vehicles and agricultural products - both primarily \nfrom rural and midwest industrial hubs. These regions have been targeted by Chinese tariffs.', 
        caption = 'Data Source: UN Comtrade International Trade Statistics Database')
 ```
+
+An analysis of exports by county finds that industry relying on Chinese markets is much more dispersed than one might first believe. While there exist hubs in Washington state, California, and New York, there are also large export areas in Texas, Georgia, Tennessee, and the Rust Belt states. This suggests tariffs levied will impact producers in several states adversly, even as they benefit from higher consumer prices.
+
 ``` {r fig.width = 9, warning = F, message = F, dpi=300}
 library(maps)
 library(mapdata)
@@ -402,88 +485,8 @@ ggplot(data.zip, aes(fill = `Log Exports`, color = `Log Exports`)) +
     axis.ticks = element_line(color = NA),
     axis.line = element_line(color = NA),
     axis.text = element_text(color = NA)) +
-  labs(title = 'At the county level...',
-       subtitle = 'As of 2017...', 
+  labs(title = 'U.S. industry exporting to China is dispersed across the nation',
+       subtitle = 'As of 2017, nearly every county exported to China, with industrial hubs in southern California, Washington, Texas, and the Rust Belt making \nup the majority of trade. What is most notable is the ubiquity of counties relying on China as an export market.', 
        caption = 'Data Sources: International Trade Administration & Missouri Census Data Center')
 
 ```
-
-
-``` {r fig.width = 9, warning = F, message = F, dpi=300}
-ggplot(com_fam_im, aes(`Commodity`, `Trade Value`)) +
-  geom_col(aes(fill = tariff), color = 'black', width = 0.8) +
-  coord_flip() +
-  theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
-        legend.position = c(.7, .40)) +
-  scale_y_continuous(labels = comma, breaks = seq(0, 150, 50), expand = c(0,0)) +
-  scale_fill_manual("Tariffs Set by US", values = c('#00FDFF', '#CC2414', '#FF6B40', 'light grey')) +
-  labs(x = '', y = 'TRADE IMPORTS (BILLIONS $USD)',
-       title = 'Most US imports from China are consumer electronics targeted by current tariffs',
-       subtitle = 'As of 2017, Chinese imports were most modern consumer staples, including electronics and household \nappliances. The Trump administration has imposed 25 percent tariffs on most of these goods.', 
-       caption = 'Data Source: UN Comtrade International Trade Statistics & Personally Compiled Tariffs Listings')
-```
-
-``` {r fig.width = 9, fig.height = 6, warning = F, message = F, dpi=300}
-
-library(ggTimeSeries)
-
-# Data source: https://beta.bls.gov/dataViewer/view/8de38039b69045d6ab7fe131c44312cb
-# Bureau of Labor Statistics Consumer Price Index Series
-bls <- read_csv('bls_cpi.csv')
-bls$new_date <- as.Date(as.yearmon(bls$date))
-
-# Create prct diff from base date (Jan 2016) to control for initial difference in CPI
-bls$prct_base <- (bls$cpi/bls$base - 1)*100
-
-# Create rolling prct change from last month
-bls$prct_chng <- (bls$cpi/lag(bls$cpi) - 1)*100
-bls$prct_chng <- ifelse(bls$date == 'Jan 2016', NA, bls$prct_chng)
-
-# rename, since categories are just horrible
-bls$id <- ifelse(bls$id == 'CUSR0000SA311', 'Clothing & Apparel',
-          ifelse(bls$id == 'CUSR0000SAD', 'All Durable Goods',
-          ifelse(bls$id == 'CUSR0000SAH3', 'Furniture & Bedding',
-          ifelse(bls$id == 'CUSR0000SEAE', 'All Footwear',
-          ifelse(bls$id == 'CUSR0000SEHK', 'Appliances',
-          ifelse(bls$id == 'CUSR0000SEHM', 'Tools & Hardware',
-          ifelse(bls$id == 'CUSR0000SERC', 'Sporting Goods',
-          ifelse(bls$id == 'CUSR0000SERE01', 'Toys',
-          ifelse(bls$id == 'CUSR0000SETA', 'Motor Vehicles',
-          ifelse(bls$id == 'CUSR0000SETC', 'Vehicle Parts & Equipment',
-            bls$id))))))))))
-
-# Set the bands for horizon plot
-max.y <- max(abs(bls$prct_chng), na.rm=T)
-nbands = 3
-hrzn_scale <- max(max.y/nbands)
-h1 <- hrzn_scale
-h2 <- hrzn_scale*2
-
-bls$ypos1 <- ifelse(bls$prct_chng > 0, pmin(bls$prct_chng, h1), 0)
-bls$ypos2 <- ifelse(bls$prct_chng > h1, pmin(bls$prct_chng-h1, h1), 0)
-bls$ypos3 <- ifelse(bls$prct_chng > h2, pmin(bls$prct_chng-h2, h1), 0)
-bls$yneg1 <- ifelse(bls$prct_chng < 0, pmin(-bls$prct_chng, h1), 0)
-bls$yneg2 <- ifelse(bls$prct_chng < -h1, pmin(-bls$prct_chng-h1, h1), 0)
-bls$yneg3 <- ifelse(bls$prct_chng < -h2, pmin(-bls$prct_chng-h2, h1), 0)
-
-# Divide into explanatory graph and full graph
-bls <- subset(bls, !is.na(bls$prct_chng))
-bls_dur <- subset(bls, bls$id == "All Durable Goods")
-bls_all <- subset(bls, bls$id != "All Durable Goods")
-
-# Create graph of all goods in top 9 categories of imports
-ggplot(bls, aes(x = new_date)) +
-  geom_ribbon(aes(ymin = 0, ymax = ypos1), fill='#fecc5c', alpha=0.25) +
-  geom_ribbon(aes(ymin = 0, ymax = ypos2), fill='#FF6B40', alpha=0.25) +
-  geom_ribbon(aes(ymin = 0, ymax = ypos3), fill='#CC2414', alpha=0.25) +
-  geom_ribbon(aes(ymin = 0, ymax = yneg1), fill='#00FDFF', alpha=0.25) +
-  geom_ribbon(aes(ymin = 0, ymax = yneg2), fill='#146ACC', alpha=0.25) +
-  facet_grid(id ~ .) +
-  theme(strip.text.y = element_text(angle = 0)) +
-  labs(x = 'YEAR', y = 'PRICE % CHANGE BY MONTH',
-       title = 'At the county level...',
-       subtitle = 'As of 2017...', 
-       caption = 'Data Sources: Bureau of Labor Statistics Consumer Price Index Series')
-
-```
-
