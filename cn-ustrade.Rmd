@@ -1,7 +1,7 @@
 ---
 title: "Who's the Victim in a US-China Trade War?"
 author: "Authored by Stephen Stapleton"
-date: "February 3, 2019"
+date: "February 9, 2019"
 output:
   html_document:
     code_folding: hide
@@ -9,21 +9,24 @@ output:
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(plyr)
+library(dplyr)
 library(ggplot2)
 library(zoo)
-library(dplyr)
 library(here)
 library(readxl)
 library(ggrepel)
 library(scales)
 library(extrafont)
+library(sf)
 
 # font_import()
 # loadfonts(device = 'win')
 
+# Set my custom theme for project
 theme_staples <- theme_bw(base_size = 14) +
   theme(
-    text=element_text(family = "Saira ExtraCondensed"),
+    text=element_text(family = "Saira Condensed"),
     plot.title =element_text(family = "Archivo Narrow"),
     axis.line = element_line(color = "grey30"),
     axis.title = element_text(color = "grey30"),
@@ -37,9 +40,62 @@ theme_staples <- theme_bw(base_size = 14) +
     panel.grid = element_line(color = "grey95")
   )
 
-mycolors <- c("#CC2414", "#FF6B40", "#00FDFF", "#3D6899", "#146ACC")
-mypalette <- 'YlOrRd'
 theme_set(theme_staples)
+
+# Set my main colors
+staples_colors <- c(
+  `red1` = "#CC0032",
+  `blue1` = "#149DCC",
+  `teal1` = "#00FFB5",
+  `red2` = "#FF5A4C",
+  `blue2` = "#317E99"
+  )
+
+# Function to extract cols as hex codes
+# Adapted from https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+# Call cols e.g. staples_cols("red")
+staples_cols <- function(...) {
+  cols <- c(...)
+  if (is.null(cols))
+    return (staples_colors)
+  staples_colors[cols]
+}
+
+# Define my palettes
+staples_palettes <- list(
+  `main` = staples_cols("red1", "red2", "teal1", "blue1", "blue2"),
+  `cool` = staples_cols("blue2", "teal1"),
+  `hot` = staples_cols("teal1", "red1"),
+  `light` = staples_cols('red2', 'blue1')
+)
+
+# Return function interpolating color palettes
+staples_pal <- function(palette = "main", reverse = FALSE, ...) {
+  pal <- staples_palettes[[palette]]
+  if (reverse) pal <- rev(pal)
+  colorRampPalette(pal, ...)
+}
+
+# Color scale constructor for cols
+scale_color_staples <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+  pal <- staples_pal(palette = palette, reverse = reverse)
+  if (discrete) {
+    discrete_scale("colour", paste0("staples_", palette), palette = pal, ...)
+  } else {
+    scale_color_gradientn(colours = pal(256), ...)
+  }
+}
+
+# Fill scale constructor for cols
+scale_fill_staples <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+  pal <- staples_pal(palette = palette, reverse = reverse)
+  if (discrete) {
+    discrete_scale("fill", paste0("staples_", palette), palette = pal, ...)
+  } else {
+    scale_fill_gradientn(colours = pal(256), ...)
+  }
+}
+
 ```
 
 ## Introduction
@@ -67,9 +123,7 @@ USall <- USall[USall$new_date < '2018-09-01',]
 USuni <- USall[USall$cty_code > 1000,]
 
 # Summarize over year to adjust for seasonal spikes
-USyr <- USuni %>%
-  group_by(cty_code, year) %>%
-  summarize(trd_bal = sum(trd_bal))
+USyr <- ddply(USuni, .(cty_code, year), summarize, trd_bal = sum(trd_bal))
 
 # Prepare for ggplot
 USyr$is_china <- ifelse(USyr$cty_code == 5700, 1, 0)
@@ -83,13 +137,13 @@ USyr <- USyr[USyr$year < 2018,]
 ggplot(USyr, aes(x = year, y = trd_bal,
   color = as.factor(cty_code), alpha = as.factor(is_china))) +
   geom_line() +
-  geom_vline(xintercept = 2001, linetype = 'dashed', color = '#00FDFF') +
+  geom_vline(xintercept = 2001, linetype = 'dashed', color = staples_cols("teal1")) +
   scale_alpha_manual(values = c(.4, 1)) +
   scale_color_manual(values = c(rep('grey', 150), '#CC2414', rep('grey', 93))) +
   scale_x_continuous(breaks = seq(1985, 2017, 5), expand = c(0,0)) +
   scale_y_continuous(breaks = seq(-400, 100, 100), expand = c(0,0)) +
-  annotate("text", x = 2015, y = -310, label = 'China', color = '#CC2414', family = "Saira ExtraCondensed", size = 5) +
-  annotate("text", x = 2000.5, y = -200, label = 'China Enters WTO', angle = 90, color = "grey30", family = "Saira ExtraCondensed", size = 5) +
+  annotate("text", x = 2015, y = -310, label = 'China', color = staples_cols("red1"), family = "Saira Condensed", size = 5) +
+  annotate("text", x = 2000.5, y = -200, label = 'China Enters WTO', angle = 90, color = "grey30", family = "Saira Condensed", size = 5) +
   annotate("rect", xmin = 2008, xmax = 2009, ymin = -400, ymax = 100, alpha = .1, fill = "grey70") +
   theme(legend.position = 'none',
         panel.grid = element_blank()) +
@@ -153,7 +207,8 @@ library(ggrepel)
 # Create non-aesthetic balanced trade line (dashed turquoise)
 # Employ geom_jitter() and geom_abline()
 # Adjust scaling for both x and y axis, scale dots
-ggplot(ImExCN, aes(x = IMval2017, y = EXval2017,
+ImExCN[order(-ImExCN$share_gdp),] %>%
+ggplot(aes(x = IMval2017, y = EXval2017,
   fill = as.factor(trd_main), size = share_gdp)) +
   geom_jitter(pch=21) +
   geom_abline(intercept = 0, slope = 1, linetype = 'dashed', color = '#00FDFF') +
@@ -164,11 +219,11 @@ ggplot(ImExCN, aes(x = IMval2017, y = EXval2017,
   theme(legend.position = c(.15, .60)) +
   scale_fill_manual(values = c('grey', '#CC2414')) +
   geom_text_repel(aes(label=ifelse(share_gdp > 3,as.character(statename),'')),hjust=.5, vjust=-2, size = 3, color = "grey30") +
-  annotate("text", x = 9.25, y = 12.25, angle = 60, label = "Balanced-Trade Line", color = "grey30", size = 5, family = "Saira ExtraCondensed") +
+  annotate("text", x = 9.25, y = 12.25, angle = 60, label = "Balanced-Trade Line", color = "grey30", size = 5, family = "Saira Condensed") +
   scale_radius(range = c(1,12)) +
   labs(x = 'LOG IMPORTS (BILLIONS $USD)', y = 'EXPORTS (BILLIONS $USD)',
        title = 'The states rely heavily on Chinese market access for imports and exports',
-       subtitle = 'In 2017, a plurality of states counted China their primary trade partner, with these imports and exports alone representing four to \neight percent of state gross domestic product (GDP). The dotted balanced-trade line indicates very few states run a surplus.', 
+       subtitle = 'In 2017, a plurality of states counted China a primary trade partner, with imports and exports representing four to \neight percent of state gross domestic product (GDP). The balanced-trade line indicates very few states run a surplus.', 
        caption = 'Data Source: United States Census Bureau & Bureau of Economic Analysis')
 ```
 
@@ -193,8 +248,8 @@ new_intersect1 <- as.data.frame(curve_intersect(line1, line4))
 new_intersect2 <- as.data.frame(curve_intersect(line2, line4))
 
 ggplot(mapping = aes(x = x, y = y)) +
-  geom_path(data = line1, color = "#FF6B40", size = 1) +
-  geom_path(data = line2, color = "#146ACC", size = 1) +
+  geom_path(data = line1, color = staples_cols("red1"), size = 1) +
+  geom_path(data = line2, color = staples_cols("blue2"), size = 1) +
   geom_path(data = line3, color = "black", linetype = 'dashed', size = 1) +
   geom_path(data = line4, color = "black", size = 1) +
   geom_point(data = base_intersect1, size = 2, color = 'grey40') +
@@ -202,20 +257,20 @@ ggplot(mapping = aes(x = x, y = y)) +
   geom_point(data = new_intersect1, size = 2, color = 'black') +
   geom_point(data = new_intersect2, size = 2, color = 'black') +
   geom_ribbon(data = subset(line2, line2$x <= 57.33401),
-      aes(ymin = 15, ymax = y), fill = '#146ACC', alpha = .2) +
+      aes(ymin = 15, ymax = y), fill = staples_cols("blue1"), alpha = .2) +
   geom_ribbon(data = subset(line1, line1$x <= 36.60526),
-      aes(ymin = y, ymax = 15), fill = '#FF6B40', alpha = .2) +
+      aes(ymin = y, ymax = 15), fill = staples_cols("red2"), alpha = .2) +
   geom_segment(data = new_intersect1,
       aes(x = x, y = 0, xend = x, yend = y), lty = "dotted") +
   geom_segment(data = new_intersect2,
       aes(x = x, y = 0, xend = x, yend = y), lty = "dotted") +  coord_equal() +
-  annotate("text", x = 88, y = 17, label = 'World Price + Tariffs', family = "Saira ExtraCondensed", size = 6, color = 'black') +
-  annotate("text", x = 70, y = 33, angle = 30, label = 'Domestic Supply', family = "Saira ExtraCondensed", size = 6, color = '#FF6B40') +
-  annotate("text", x = 30, y = 31, angle = -31, label = 'Demand', family = "Saira ExtraCondensed", size = 6, color = '#146ACC') +
-  annotate("text", x = 47, y = 12, label = 'Lost Consumer Surplus', family = "Saira ExtraCondensed", color = 'black', size = 4) +
-  annotate("text", x = 92, y = 10, label = 'World Price', family = "Saira ExtraCondensed", size = 6, color = 'black') +
-  annotate("text", x = 21, y = 22.5, label = 'New Consumer Surplus', family = "Saira ExtraCondensed", color = '#146ACC', size = 4) +
-  annotate("text", x = 18, y = 12, label = 'Producer Surplus', family = "Saira ExtraCondensed", color = '#FF6B40', size = 4) +
+  annotate("text", x = 88, y = 17, label = 'World Price + Tariffs', family = "Saira Condensed", size = 6, color = 'black') +
+  annotate("text", x = 70, y = 33, angle = 30, label = 'Domestic Supply', family = "Saira Condensed", size = 6, color = staples_cols("red1")) +
+  annotate("text", x = 30, y = 31, angle = -31, label = 'Demand', family = "Saira Condensed", size = 6, color = staples_cols("blue2")) +
+  annotate("text", x = 47, y = 12, label = 'Lost Consumer Surplus', family = "Saira Condensed", color = 'black', size = 4) +
+  annotate("text", x = 92, y = 10, label = 'World Price', family = "Saira Condensed", size = 6, color = 'black') +
+  annotate("text", x = 21, y = 22.5, label = 'New Consumer Surplus', family = "Saira Condensed", color = staples_cols("blue2"), size = 4) +
+  annotate("text", x = 18, y = 12, label = 'Producer Surplus', family = "Saira Condensed", color = staples_cols("red1"), size = 4) +
   labs(x = 'QUANTITY', y = 'PRICE',
        title = 'Theory suggests tariffs hurt consumers but may help domestic suppliers',
        subtitle = 'With a given imported good, consumers are benefiting from low costs and high quantity. When tariffs push up the outside \nprice, quantity goes down and prices go up, hurting consumers while providing relatively little benefit to domestic businesses.', 
@@ -234,9 +289,7 @@ com <- read_csv('comtrade.csv')
 com <- subset(com, com$`Trade Flow Code` < 3 & com$`Commodity Code` < 98)
 
 # turn to billions USD
-com_fam <- com %>%
-  group_by(`Trade Flow`, `Commodity Code`) %>%
-  summarize(`Trade Value` = sum(`Trade Value (US$)`))
+com_fam <- ddply(com, .(`Trade Flow`, `Commodity Code`), summarize, `Trade Value` = sum(`Trade Value (US$)`))
 com_fam$`Trade Value` <- as.numeric(com_fam$`Trade Value`)
 com_fam$`Trade Value` <- com_fam$`Trade Value`/1000000000
 
@@ -326,7 +379,7 @@ com_fam_im <- com_fam_im[10:25,]
 com_fam_im$tariff <- ifelse(com_fam_im$`Commodity Code` %in% c(44, 83, 42, 29, 94), 'Round 3 (Sept 2018)',
                      ifelse(com_fam_im$`Commodity Code` %in% c(73, 39), 'Round 2 (Aug 2018)', 
                      ifelse(com_fam_im$`Commodity Code` %in% c(90, 87, 84, 85), 'Round 1 (Jul 2018)', 
-                     'No Tariff Set')))
+                     'No Tariff Yet Set')))
 
 ggplot(com_fam_im, aes(`Commodity`, `Trade Value`)) +
   geom_col(aes(fill = tariff), color = 'black', width = 0.8) +
@@ -334,10 +387,10 @@ ggplot(com_fam_im, aes(`Commodity`, `Trade Value`)) +
   theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
         legend.position = c(.7, .40)) +
   scale_y_continuous(labels = comma, breaks = seq(0, 150, 50), expand = c(0,0)) +
-  scale_fill_manual("Tariffs Set by US", values = c('#00FDFF', '#CC2414', '#FF6B40', 'light grey')) +
+  scale_fill_manual("Tariffs Set by US", values = c('light grey', '#317E99', '#149DCC', '#00FFB5')) +
   labs(x = '', y = 'TRADE IMPORTS (BILLIONS $USD)',
        title = 'Most US imports from China are consumer electronics targeted by current tariffs',
-       subtitle = 'As of 2017, Chinese imports were most modern consumer staples, including electronics and household \nappliances. The Trump administration has imposed 25 percent tariffs on most of these goods.', 
+       subtitle = 'As of 2017, most Chinese imports were modern consumer staples, including electronics and house \nappliances. The Trump administration has imposed 25 percent tariffs on most of these goods.', 
        caption = 'Data Source: UN Comtrade International Trade Statistics & Personally Compiled Tariffs Listings')
 ```
 
@@ -353,9 +406,9 @@ bls$new_date <- as.Date(as.yearmon(bls$date))
 # Create prct diff from base date (Jan 2016) to control for initial difference in CPI
 bls$prct_base <- (bls$cpi/bls$base - 1)*100
 
-# Create rolling prct change from last month
-bls$prct_chng <- (bls$cpi/lag(bls$cpi) - 1)*100
-bls$prct_chng <- ifelse(bls$date == 'Jan 2016', NA, bls$prct_chng)
+# Create rolling prct change from last 3 months
+bls$prct_chng <- (bls$cpi/lag(bls$cpi, n=3) - 1)*100
+bls$prct_chng <- ifelse(bls$date == 'Jan 2016' | bls$date == 'Feb 2016' | bls$date == 'Mar 2016', NA, bls$prct_chng)
 
 # rename, since categories are just horrible
 bls$id <- ifelse(bls$id == 'CUSR0000SA311', 'Clothing & Apparel',
@@ -392,15 +445,15 @@ bls_all <- subset(bls, bls$id != "All Durable Goods")
 # Create graph of all goods in top 9 categories of imports
 ggplot(bls, aes(x = new_date)) +
   geom_ribbon(aes(ymin = 0, ymax = ypos1), fill='#fecc5c', alpha=0.25) +
-  geom_ribbon(aes(ymin = 0, ymax = ypos2), fill='#FF6B40', alpha=0.25) +
-  geom_ribbon(aes(ymin = 0, ymax = ypos3), fill='#CC2414', alpha=0.25) +
-  geom_ribbon(aes(ymin = 0, ymax = yneg1), fill='#00FDFF', alpha=0.25) +
-  geom_ribbon(aes(ymin = 0, ymax = yneg2), fill='#146ACC', alpha=0.25) +
+  geom_ribbon(aes(ymin = 0, ymax = ypos2), fill='#FF5A4C', alpha=0.25) +
+  geom_ribbon(aes(ymin = 0, ymax = ypos3), fill='#CC0032', alpha=0.25) +
+  geom_ribbon(aes(ymin = 0, ymax = yneg1), fill='#00FFB5', alpha=0.25) +
+  geom_ribbon(aes(ymin = 0, ymax = yneg2), fill='#149DCC', alpha=0.25) +
   facet_grid(id ~ .) +
   theme(strip.text.y = element_text(angle = 0)) +
-  labs(x = 'YEAR', y = 'PRICE % CHANGE BY MONTH',
-       title = 'Month-to-month changes in consumer prices show tariffs already impacting goods',
-       subtitle = 'As of December 2018, several imported goods with tariffs levied have seen upticks (red hues) in real price, particularly appliances. This includes \neverything from washing machines to iphones. Prior to the trade war, goods were showing a general downward trend (blue hue) in costs.', 
+  labs(x = 'YEAR', y = 'ROLLING % PRICE CHANGE (3 MONTHS)',
+       title = 'Rolling percent change in consumer prices show tariffs already impacting goods',
+       subtitle = 'As of December 2018, many tariffed imports ticked up in price (red hues), particularly appliances. This includes \neverything from washing machines to iphones. Prior to the trade war, goods prices were generally falling (blue hue).', 
        caption = 'Data Sources: Bureau of Labor Statistics Consumer Price Index Series')
 
 ```
@@ -417,7 +470,7 @@ ggplot(com_fam_ex, aes(`Commodity`, `Trade Value`)) +
   theme(panel.grid.major.y = element_blank(), panel.grid.minor.y = element_blank(),
         legend.position = c(.7, .40)) +
   scale_y_continuous(labels = comma, breaks = seq(0, 15, 5), expand = c(0,0)) +
-  scale_fill_manual("Tariffs Set by China", values = c('light grey', '#CC2414')) +
+  scale_fill_manual("Tariffs Set by China", values = c('light grey', '#CC0032')) +
   labs(x = '', y = 'TRADE EXPORTS (BILLIONS $USD)',
        title = 'US exports to China come from the rust belt and rural industries',
        subtitle = 'As of 2017, US exports to China mostly consist of vehicles and agricultural products - both primarily \nfrom rural and midwest industrial hubs. These regions have been targeted by Chinese tariffs.', 
@@ -433,7 +486,6 @@ library(rgdal)
 library(rgeos)
 library(zipcode)
 library(albersusa)
-library(plyr)
 
 # Extract zipcode specific data
 data(zipcode)
@@ -474,19 +526,140 @@ cty_sf$county <- cty_sf$fips
 
 # Join and accumulate by county level
 data.zip <- left_join(cty_sf, df.zip, by = "county")
-data.zip$`Log Exports` <- as.numeric(log10(data.zip$exports))
-data.zip$`Log Exports` <- ifelse(data.zip$`Log Exports`< 0, NA, data.zip$`Log Exports`)
 
-ggplot(data.zip, aes(fill = `Log Exports`, color = `Log Exports`)) +
-  geom_sf() +
-  scale_fill_distiller(palette = 'YlOrRd', direction = 1) +
-  scale_color_distiller(palette = 'YlOrRd', direction = 1) +
+data.zip$exp_pop <- data.zip$exports/data.zip$pop
+
+data.zip$bins <- cut(data.zip$exp_pop, c(0,1500, 3000, 4500, 6000, 1000000), include.lowest = T, labels = c("0-1,500", "1,500-3,000", "3,000-4,500", "4,500-6,000", "6,000+"))
+
+filter(data.zip, !is.na(bins)) %>% 
+ggplot(aes(fill = bins, color = bins)) +
+  geom_sf(alpha=0.8) +
+  scale_fill_staples(discrete = T, palette = 'main') +
+  scale_color_staples(discrete = T, palette = 'main') +
   theme(
     axis.ticks = element_line(color = NA),
     axis.line = element_line(color = NA),
     axis.text = element_text(color = NA)) +
-  labs(title = 'U.S. industry exporting to China is dispersed across the nation',
-       subtitle = 'As of 2017, nearly every county exported to China, with industrial hubs in southern California, Washington, Texas, and the Rust Belt making \nup the majority of trade. What is most notable is the ubiquity of counties relying on China as an export market.', 
+  guides(fill=guide_legend(title="Exports per Capita ($USD)"),
+         color=guide_legend(title="Exports per Capita ($USD)")) +
+  labs(title = 'U.S. exports per capita are highest in the Midwest and Texas',
+       subtitle = 'As of 2017, every county traded with China, with industrial hubs in Washington state, Texas, and the Rust Belt having \nhight export-per-person ratios. But this isnt unique to cities - the rural Midwest also depends on the free flow of trade.',
        caption = 'Data Sources: International Trade Administration & Missouri Census Data Center')
+
+```
+
+It is also important to note that, contrary to the popular narrative, rural populations are just as susceptible to interruptions of free trade with our major trade partners. An analysis of state imports and exports per capita compared to the percent of the state population in rural areas finds more rural areas may actually rely more heavily on export access to countries like China. Meanwhile, urban-centric states will likely suffer more from the increased commodity prices already cropping up for tariffed goods.
+
+``` {r fig.width = 9, warning = F, message = F, dpi=300}
+# Source: https://www.census.gov/foreign-trade/statistics/state/origin_movement/index.html#2017; https://www.census.gov/geo/reference/ua/urban-rural-2010.html
+rururb <- read_csv('rur_urban2010.csv')
+
+rururb$val_pop <- rururb$value*1000000/(rururb$POP_URBAN+rururb$POP_RURAL)
+rururb$bins <- cut(rururb$POPPCT_RURAL, breaks = c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65),
+                   include.lowest = T,
+                   labels = c("0-5", "5-10", "10-15", "15-20", "20-25", "25-30", "30-35", "35-40",
+                              "40-45", "45-50", "50-55", "55-60", "60+"))
+
+rururb$val_pop <- ifelse(rururb$type == "Imports", -1*rururb$val_pop, rururb$val_pop)
+mids <- ddply(rururb, .(type, bins), summarize, val_mean = mean(val_pop))
+
+rururb <- left_join(rururb, mids, by = c('bins', 'type'))
+rururb$dist <- 1- abs((rururb$val_mean - rururb$val_pop)/rururb$val_mean)
+
+ggplot(rururb, aes(x = bins, y = val_pop, fill = type, color = type, alpha = dist)) +
+  geom_point(data = subset(rururb, type = 'Imports'), stat = 'identity', size = 3) +
+  geom_point(data = subset(rururb, type = 'Exports'), stat = "identity", size = 3) +
+  geom_hline(yintercept = 0) +
+  scale_alpha_continuous(range = c(0, 1)) +
+  scale_fill_staples(discrete = T, palette = 'light') +
+  guides(fill=guide_legend(title="Trade Flow"), color=guide_legend(title="Trade Flow")) +
+  coord_flip() +
+  scale_alpha(guide = 'none') +
+  labs(x="% RURAL POPULATION", y = "VALUE PER CAPITA ($USD)",
+       title = 'Rural states have just as much (or even more) to lose from export tariffs',
+       subtitle = '2010 rural population data suggest a positive relationship between rural population share and export value per \ncapita. Meanwhile, large urban states consume more imports per capita, making them sensitive to import tariffs.',
+       caption = 'Data Sources: International Trade Administration & U.S. Census Bureau')
+
+```
+
+Following this trend, the next cartogram weights each county's size by the number of farms in the state. This analysis finds acute populations of farmers across the Midwest, but also in more eastern regions and the state of Texas. These populations were among the first to be impacted by Chinese tariffs on soybeans and other foodstuffs, requiring intervention from the U.S. Department of Agriculture.
+
+``` {r fig.width = 9, warning = F, message = F, dpi=300}
+
+library(cartogram)
+library(tmap)
+library(rgdal)
+# library(urbnmapr)
+
+# Source: https://www.icip.iastate.edu/tables/agriculture/farms-by-state
+farms <- read_csv('us_farms.csv')
+farms$farms <- ifelse(is.na(farms$farms), 0, farms$farms)
+farms$state <- farms$statename
+farms$Farms <- farms$farms/farms$county_count
+
+#---------------------------------------
+#states <- get_urbn_map(map = 'states') %>%
+#  rowwise() %>%
+#  mutate(geometry = st_geometry(st_point(c(long, lat)))) %>%
+#  select(-lat, -long) %>%
+#  ungroup() %>%
+#  as.data.frame() %>%
+#  st_as_sf(sf_column_name = 'geometry')
+#data.state <- left_join(states, farms, by = 'state_name'))
+# -----------
+  
+state_sf <- counties_sf("aeqd")
+state_sf$fips <- as.factor(as.numeric(cty_sf$state_fips))
+data.state <- left_join(state_sf, farms, by = "state")
+
+  
+state.cont <- cartogram_cont(data.state, "farms", itermax = 5)
+
+tm_shape(state.cont) + tm_polygons(col = "farms", alpha = .7, style = "jenks", legend.show = T, legend.hist = T, title = "# of Farms", palette = 'viridis', legend.position = 'right', border.col = "white") + tm_layout(frame = F, legend.outside = T, main.title = "Most U.S. farms are in the Midwest and Texas", main.title.fontfamily = "Saira Condensed", fontfamily = "Archivo Narrow", title = "Data Source: Iowa Community Indicators Program")
+```
+
+All of this being said, it is still important to note that China is not the only player impactind the U.S.-World deficit. Deficits with a variety of other nations account for the greatest share of our total national deficit. We rely on China for a fifth of our total imports, meaning with tariffs it will be difficult for other major trade partners Mexico and Canada to pick up the slack.
+
+``` {r fig.width = 9, warning = F, message = F, dpi=300}
+# Source: https://www.census.gov/foreign-trade/balance/index.html
+# Use only 2017 numbers, make base unit 10s of billions
+waf <- USuni[USuni$year == 2017,] %>%
+        ddply(.(cty_name), summarize,
+          imports = sum(imports)/10000,
+          exports = sum(exports)/10000)
+
+# Get top 5 trade partners for manual input
+# TO DO: FIGURE OUT [[]] AUTOMATED METHOD
+waf_imp <- waf[order(-waf$imports),][1:5,]
+waf_exp <- waf[order(-waf$exports),][1:5,]
+
+imp <- c(`China` = 50,
+         `Mexico` = 31,
+         `Canada` = 30,
+         `Japan` = 14,
+         `Germany` = 12,
+         `All Others` = 97)
+
+exp <- c(`China` = 13,
+         `Mexico` = 24,
+         `Canada` = 28,
+         `Japan` = 7,
+         `Germany` = 5,
+         `All Others` = 77,
+         80)
+
+library(waffle)
+
+par(family = "Saira Condensed")
+iron(
+  waffle(exp, rows = 8, size = 1,
+         colors = c("#CC0032", "#FF5A4C", "#00FFB5", "#149DCC", "#317E99", 'grey70', 'white'),
+         title = 'U.S. Exports to the World',
+         xlab = '1 square = $10 billion in trade'),
+  waffle(imp, rows = 8, size = 1,
+         colors = c("#CC0032", "#FF5A4C", "#00FFB5", "#149DCC", "#317E99", 'grey70'),
+         title = 'U.S. Imports from the World',
+         xlab = 'Data Source: United States Census Bureau')
+  )
 
 ```
