@@ -106,22 +106,25 @@ scale_fill_staples <- function(palette = "main", discrete = TRUE, reverse = FALS
     scale_fill_gradientn(colours = pal(256), ...)
   }
 }
+```
 
-# Present color palette
-ggplot() +
-  geom_tile(aes(x = 1:6, y = 1), fill = theme_colors) +
-  geom_text(
-    aes(x = 1:6, y = 1, label = theme_colors),
-    color = "white",
-    size = 5) +
+``` {r palette, echo = FALSE, message = FALSE, fig.height = 0.4, fig.width = 9,}
+
+palette_df <- data.frame('NAME'=c('A', 'B', 'C', 'D', 'E'),
+                         'VALUE' = c(1, 1, 1, 1, 1))
+
+palette_df %>%
+  ggplot(aes(x=NAME, fill = NAME)) +
+  geom_bar(width=1) +
+  scale_fill_staples(discrete = T, palette = 'main') +
   scale_x_discrete(expand = c(0, 0)) + 
   scale_y_discrete(expand= c(0, 0)) + 
-  labs(title = "Trade War Project Color Palette") +
   theme(
     axis.title = element_blank(),
-    axis.text = element_blank()
-  )
-
+    axis.text = element_blank(),
+    axis.line = element_blank(),
+    axis.ticks = element_blank()) +
+  guides(fill = FALSE)
 ```
 
 # Introduction
@@ -250,7 +253,7 @@ ggplot(aes(x = IMval2017, y = EXval2017,
   theme(legend.position = c(.15, .60)) +
   scale_fill_manual(values = c('grey', '#CC0032')) +
   geom_text_repel(aes(label=ifelse(share_gdp > 3,as.character(statename),'')),hjust=.5, vjust=-2, size = 3, color = "grey30") +
-  annotate("text", x = 9.25, y = 12.25, angle = 60, label = "Balanced-Trade Line", color = "grey30", size = 5, family = "Saira Condensed") +
+  annotate("text", x = 9, y = 12.4, angle = 60, label = "Balanced-Trade Line", color = "grey30", size = 5, family = "Saira Condensed") +
   scale_radius(range = c(1,12)) +
   annotate("text", x = 80, y = 13, label = 'California and Texas are\ntwo heavy importers with\nlarge consumer populations', family = "Saira Condensed", color = 'grey30') +
   labs(x = 'LOG IMPORTS (BILLIONS $USD)', y = 'EXPORTS (BILLIONS $USD)',
